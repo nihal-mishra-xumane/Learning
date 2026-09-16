@@ -19,8 +19,8 @@ export default function App() {
 
   return (
     <main className="app-shell">
-      <nav className="navigation" aria-label="Common components">
-        <strong>Common components</strong>
+      <nav className="navigation" aria-label="Pages">
+        <strong>Pages</strong>
         {pages.map((page) => (
           <button
             key={page}
@@ -32,7 +32,7 @@ export default function App() {
         ))}
       </nav>
       <section className="content">
-        <p>Common component page will be displayed here.</p>
+        <p>Page content will be displayed here.</p>
         <small>Selected: {activePage}</small>
       </section>
     </main>
