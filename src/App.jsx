@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Buttons from './pages/Buttons/Buttons'
+import Forms from './pages/Forms/Forms'
 
 const pages = [
   'Login',
@@ -32,8 +34,12 @@ export default function App() {
         ))}
       </nav>
       <section className="content">
-        <p>Page content will be displayed here.</p>
-        <small>Selected: {activePage}</small>
+        {activePage === 'Buttons' ? <Buttons /> : activePage === 'Forms' ? <Forms /> : (
+          <>
+            <p>Page content will be displayed here.</p>
+            <small>Selected: {activePage}</small>
+          </>
+        )}
       </section>
     </main>
   )
