@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import SearchPage from './pages/Search/SearchPage'
+import FiltersPage from './pages/Filters/FiltersPage'
 
 const pages = [
   'Login',
@@ -31,9 +33,18 @@ export default function App() {
           </button>
         ))}
       </nav>
+
       <section className="content">
-        <p>Page content will be displayed here.</p>
-        <small>Selected: {activePage}</small>
+        {activePage === 'Search' ? (
+          <SearchPage />
+        ) : activePage === 'Filters' ? (
+          <FiltersPage />
+        ) : (
+          <>
+            <p>Page content will be displayed here.</p>
+            <small>Selected: {activePage}</small>
+          </>
+        )}
       </section>
     </main>
   )

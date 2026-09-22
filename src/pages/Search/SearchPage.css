@@ -1,0 +1,232 @@
+.search-demo-page {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 8px 4px 40px;
+}
+
+.search-demo-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.search-demo-tab {
+  border: 1px solid #d7dfe9;
+  background: rgba(255, 255, 255, 0.4);
+  color: #1f2a37;
+  border-radius: 16px;
+  padding: 18px 20px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-demo-tab.active {
+  background: #dfeeff;
+  border-color: #b8d7f5;
+  box-shadow: inset 0 0 0 1px rgba(103, 167, 234, 0.5);
+}
+
+.search-demo-preview {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid #dfe7f3;
+  border-radius: 18px;
+  padding: 18px 18px 24px;
+  margin-bottom: 28px;
+}
+
+.search-preview-topbar,
+.search-states-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.search-preview-heading-wrap,
+.search-states-title-wrap {
+  display: grid;
+  gap: 8px;
+}
+
+.search-preview-kicker,
+.search-states-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #5e88d3;
+  text-transform: uppercase;
+}
+
+.search-preview-heading-wrap h2,
+.search-states-title-wrap h3 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
+  line-height: 1.1;
+  color: #111827;
+}
+
+.search-preview-pill {
+  border: 1px solid #c5d4ed;
+  background: rgba(255, 255, 255, 0.55);
+  color: #2e4a6d;
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.search-preview-inline-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 18px;
+  padding: 0.9rem 1.1rem;
+  border-radius: 999px;
+  background: #e9f1ff;
+  border: 1px solid #ccdcff;
+  color: #365b9d;
+  font-weight: 600;
+}
+
+.search-preview-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #5a88d8;
+  box-shadow: 0 0 0 4px rgba(90, 136, 216, 0.15);
+}
+
+.search-preview-component {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.search-preview-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #4f7ae6;
+  margin-bottom: 6px;
+}
+
+.search-preview-selected-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 68px;
+  border: 1px solid #dfe7f4;
+  border-radius: 18px;
+  background: rgba(237, 243, 255, 0.8);
+  padding: 0 18px;
+  font-size: clamp(1.05rem, 1.6vw, 1.5rem);
+  font-weight: 700;
+  color: #1a2430;
+}
+
+.search-demo-states {
+  padding-top: 8px;
+}
+
+.search-state-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.search-state-card {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid #dfe7f3;
+  border-radius: 18px;
+  padding: 18px 18px 20px;
+  min-height: 200px;
+}
+
+.search-state-card h4 {
+  margin: 0;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  color: #4a7ae0;
+  font-weight: 800;
+}
+
+.search-state-card p {
+  margin: 14px 0 18px;
+  color: #5d6471;
+  font-size: 0.96rem;
+}
+
+.search-example-results {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 8px;
+}
+
+.search-example-result {
+  background: rgba(94, 136, 216, 0.05);
+  border: 1px solid #dfe8f5;
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  color: #1f2937;
+  font-size: 0.95rem;
+}
+
+.search-example-empty {
+  color: #6d7a8d;
+  font-size: 0.95rem;
+  padding: 0.7rem 0.2rem;
+}
+
+.autocomplete-example-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+
+.autocomplete-example-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: #edf4ff;
+  border: 1px solid #d8e6ff;
+  color: #3761b0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .search-demo-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .search-state-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .search-demo-page {
+    padding: 8px 6px 24px;
+  }
+
+  .search-preview-topbar,
+  .search-states-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .search-demo-tabs {
+    grid-template-columns: 1fr;
+  }
+}
