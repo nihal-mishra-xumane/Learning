@@ -63,6 +63,128 @@ button {
   color: #777;
 }
 
+.status-page {
+  max-width: 760px;
+}
+
+.page-heading {
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #1769aa;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-heading h1 {
+  margin: 0 0 10px;
+  font-size: 32px;
+}
+
+.page-heading > p:last-child,
+.section-heading p {
+  margin: 0;
+  color: #687386;
+}
+
+.component-section {
+  padding: 24px 0;
+  border-top: 1px solid #e4e4e4;
+}
+
+.section-heading h2 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tabs-demo {
+  margin-top: 20px;
+  border: 1px solid #e4e4e4;
+  background: #fff;
+}
+
+.tabs-demo__content {
+  min-height: 120px;
+  padding: 24px;
+}
+
+.tabs-demo__content p {
+  margin: 8px 0 0;
+  color: #687386;
+}
+
+.tabs-demo__content--compact {
+  min-height: 90px;
+}
+
+.tabs-page code {
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: #f0f2f5;
+  color: #1769aa;
+  font-size: 0.9em;
+}
+
+.demo-page {
+  max-width: 860px;
+}
+
+.demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.demo-actions button,
+.modal__footer button {
+  padding: 9px 13px;
+  border: 1px solid #cbd2dc;
+  border-radius: 4px;
+  background: #fff;
+  color: #334155;
+  cursor: pointer;
+}
+
+.demo-actions button:hover,
+.modal__footer button:hover:not(:disabled) {
+  border-color: #1769aa;
+  color: #1769aa;
+}
+
+.demo-actions button:focus-visible,
+.modal__footer button:focus-visible {
+  outline: 2px solid #1769aa;
+  outline-offset: 2px;
+}
+
+.demo-actions button:disabled,
+.modal__footer button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.demo-button--active {
+  border-color: #1769aa !important;
+  background: #edf7ff !important;
+  color: #1769aa !important;
+}
+
+.tabs-demo--pills {
+  padding: 16px;
+}
+
 @media (max-width: 600px) {
   .app-shell {
     display: block;
@@ -76,5 +198,9 @@ button {
 
   .content {
     padding: 32px 20px;
+  }
+
+  .page-heading h1 {
+    font-size: 28px;
   }
 }

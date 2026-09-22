@@ -1,0 +1,135 @@
+.tabs {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  border-bottom: 1px solid #dfe3e8;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabs__list {
+  position: relative;
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+  gap: 4px;
+}
+
+.tabs--pills {
+  width: fit-content;
+  max-width: 100%;
+  padding: 4px;
+  border: 1px solid #dfe3e8;
+  overflow-x: auto;
+  border-radius: 6px;
+  background: #f3f5f8;
+}
+
+.tabs--pills .tabs__list {
+  min-width: max-content;
+}
+
+.tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  padding: 11px 14px 10px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #687386;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  scroll-snap-align: start;
+  transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+  white-space: nowrap;
+}
+
+.tabs__icon {
+  display: inline-flex;
+}
+
+.tabs__icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.tabs__count {
+  min-width: 20px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #e8edf3;
+  color: #566173;
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.tabs__tab:hover:not(:disabled) {
+  color: #1769aa;
+}
+
+.tabs__tab:focus-visible {
+  outline: 2px solid #1769aa;
+  outline-offset: -2px;
+}
+
+.tabs__tab--active {
+  color: #1769aa;
+}
+
+.tabs__indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: #1769aa;
+  pointer-events: none;
+  transition: transform 200ms ease, width 200ms ease, opacity 150ms ease;
+}
+
+.tabs--pills .tabs__tab {
+  border-bottom: 0;
+  border-radius: 4px;
+}
+
+.tabs--pills .tabs__tab--active {
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(20 27 38 / 12%);
+}
+
+.tabs--pills .tabs__indicator {
+  display: none;
+}
+
+.tabs__tab--disabled,
+.tabs__tab:disabled {
+  color: #b1b7c0;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .tabs {
+    scroll-snap-type: x proximity;
+  }
+
+  .tabs__list {
+    gap: 0;
+  }
+
+  .tabs__tab {
+    padding: 10px 12px 9px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabs__tab,
+  .tabs__indicator {
+    transition: none;
+  }
+}
