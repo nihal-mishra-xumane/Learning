@@ -2,8 +2,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f6f8f7" />
+    <meta name="theme-color" content="#f8fafc" />
     <title>Airtecture | UI foundation</title>
+    <!--
+      The only literal colours in the project. They exist because the page must
+      paint before React can apply the token variables. They mirror
+      palette.neutral[50] and palette.neutral[950] - update them together.
+    -->
+    <style>
+      html[data-theme='light'] { background: #f8fafc; }
+      html[data-theme='dark'] { background: #020617; }
+    </style>
+    <script>
+      // Runs before first paint so a dark-mode user never sees a white flash.
+      // Keep the storage key in sync with the ThemeProvider `storageKey` prop.
+      (function () {
+        try {
+          var raw = localStorage.getItem('ui-theme')
+          var stored = raw ? JSON.parse(raw).mode : null
+          var mode =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = mode
+          document.documentElement.style.colorScheme = mode
+        } catch (error) {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

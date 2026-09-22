@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { ErrorBoundary } from './common/components'
+import { ThemeToggle } from './common/theme'
+import ThemeConfigPage from './pages/Theme/ThemeConfigPage'
 
 const pages = [
   'Login',
@@ -18,23 +21,49 @@ export default function App() {
   const [activePage, setActivePage] = useState('Theme')
 
   return (
-    <main className="app-shell">
-      <nav className="navigation" aria-label="Pages">
-        <strong>Pages</strong>
-        {pages.map((page) => (
-          <button
-            key={page}
-            className={activePage === page ? 'active' : ''}
-            onClick={() => setActivePage(page)}
-          >
-            {page}
-          </button>
-        ))}
-      </nav>
-      <section className="content">
-        <p>Page content will be displayed here.</p>
-        <small>Selected: {activePage}</small>
-      </section>
-    </main>
+    <div className="app-shell">
+      <a className="ui-skip-link" href="#main-content">
+        Skip to content
+      </a>
+
+      <header className="app-header">
+        <strong className="app-brand">Airtecture</strong>
+        <ThemeToggle iconOnly label="Colour theme" />
+      </header>
+
+      <div className="app-body">
+        <nav className="navigation" aria-label="Pages">
+          {pages.map((page) => (
+            <button
+              key={page}
+              type="button"
+              className={activePage === page ? 'active' : ''}
+              aria-current={activePage === page ? 'page' : undefined}
+              onClick={() => setActivePage(page)}
+            >
+              {page}
+            </button>
+          ))}
+        </nav>
+
+        <main className="content" id="main-content" tabIndex={-1}>
+          <div className="content-inner">
+            <ErrorBoundary key={activePage}>
+              {activePage === 'Theme' ? (
+                <ThemeConfigPage />
+              ) : (
+                <div className="ui-empty">
+                  <p className="ui-text-secondary">{activePage} has not been built yet.</p>
+                  <p className="ui-text-muted">
+                    It will reuse the components and tokens from the Theme page - no new colours or
+                    sizes.
+                  </p>
+                </div>
+              )}
+            </ErrorBoundary>
+          </div>
+        </main>
+      </div>
+    </div>
   )
 }

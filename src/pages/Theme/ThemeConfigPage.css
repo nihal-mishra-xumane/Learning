@@ -1,0 +1,183 @@
+/* Layout for the Theme Configuration screen. Tokens only - no literal values. */
+
+.theme-config {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-size-section-gap);
+}
+
+.theme-config-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--ui-space-5);
+}
+
+.theme-config-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ui-space-3);
+}
+
+.theme-config-warning {
+  display: block;
+}
+
+.theme-config-warning + .theme-config-warning {
+  margin-top: var(--ui-space-2);
+}
+
+.theme-config-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+  gap: var(--ui-size-section-gap);
+  align-items: start;
+}
+
+.theme-config-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-size-section-gap);
+  min-width: 0;
+}
+
+.theme-config-preview {
+  position: sticky;
+  /* Clears the sticky app header. */
+  top: calc(var(--ui-size-header) + var(--ui-space-5));
+  min-width: 0;
+}
+
+.theme-config-preview-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-4);
+}
+
+.theme-config-preview-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ui-space-3);
+}
+
+/* ------------------------------------------------------- mode thumbnails */
+
+.mode-thumb {
+  position: relative;
+  display: flex;
+  gap: var(--ui-space-2);
+  height: var(--ui-space-11);
+  padding: var(--ui-space-2);
+  border-radius: var(--ui-radius-sm);
+  overflow: hidden;
+}
+
+.mode-thumb-side {
+  flex: 0 0 22%;
+  border-radius: var(--ui-radius-xs);
+}
+
+.mode-thumb-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--ui-space-2);
+}
+
+.mode-thumb-bar {
+  height: var(--ui-space-2);
+  width: 100%;
+  border-radius: var(--ui-radius-pill);
+}
+
+/* The "system" card shows both halves at once. */
+.mode-thumb-split {
+  position: absolute;
+  inset: 0 0 0 50%;
+  border-left: var(--ui-border-width-hairline) solid;
+}
+
+/* ------------------------------------------------------------ app preview */
+
+.preview {
+  border: var(--ui-border-width-hairline) solid var(--ui-color-border-subtle);
+  border-radius: var(--ui-radius-lg);
+  background: var(--ui-color-bg-canvas);
+  overflow: hidden;
+}
+
+.preview-navbar {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-space-4);
+  padding: var(--ui-space-3) var(--ui-space-4);
+  background: var(--ui-color-bg-surface);
+  border-bottom: var(--ui-border-width-hairline) solid var(--ui-color-border-subtle);
+}
+
+.preview-logo {
+  width: var(--ui-space-6);
+  height: var(--ui-space-6);
+  border-radius: var(--ui-radius-sm);
+  background: var(--ui-color-primary-solid);
+}
+
+.preview-brand {
+  font-size: var(--ui-font-size-sm);
+  font-weight: var(--ui-font-weight-semibold);
+}
+
+.preview-nav {
+  display: flex;
+  gap: var(--ui-space-4);
+  margin-left: auto;
+}
+
+.preview-nav-item {
+  font-size: var(--ui-font-size-xs);
+  color: var(--ui-color-text-muted);
+}
+
+.preview-nav-active {
+  color: var(--ui-color-primary-soft-text);
+  font-weight: var(--ui-font-weight-medium);
+}
+
+.preview-nav-icons {
+  display: flex;
+  gap: var(--ui-space-3);
+  color: var(--ui-color-text-muted);
+}
+
+.preview-body {
+  padding: var(--ui-space-4);
+}
+
+/* Tablet and below: the preview moves under the controls. */
+@media (max-width: 1199px) {
+  .theme-config-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .theme-config-preview {
+    position: static;
+  }
+}
+
+@media (max-width: 767px) {
+  .theme-config-actions {
+    width: 100%;
+  }
+
+  .theme-config-actions .ui-btn {
+    flex: 1 1 auto;
+  }
+
+  .preview-nav {
+    display: none;
+  }
+}
