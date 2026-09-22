@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SidebarPage from './pages/Sidebar/SidebarPage'
 
 const pages = [
   'Login',
@@ -31,10 +32,12 @@ export default function App() {
           </button>
         ))}
       </nav>
-      <section className="content">
-        <p>Page content will be displayed here.</p>
-        <small>Selected: {activePage}</small>
-      </section>
+      {activePage === 'Sidebar' ? <SidebarPage /> : (
+        <section className="content">
+          <p>Page content will be displayed here.</p>
+          <small>Selected: {activePage}</small>
+        </section>
+      )}
     </main>
   )
 }
