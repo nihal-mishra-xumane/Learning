@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import SearchPage from './pages/Search/SearchPage'
 import FiltersPage from './pages/Filters/FiltersPage'
+import Buttons from './pages/Buttons/Buttons'
+import Forms from './pages/Forms/Forms'
 
 const pages = [
   'Login',
@@ -39,6 +41,10 @@ export default function App() {
           <SearchPage />
         ) : activePage === 'Filters' ? (
           <FiltersPage />
+        ) : activePage === 'Buttons' ? (
+          <Buttons />
+        ) : activePage === 'Forms' ? (
+          <Forms />
         ) : (
           <>
             <p>Page content will be displayed here.</p>

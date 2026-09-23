@@ -1,0 +1,146 @@
+.common-field {
+  min-width: 0;
+}
+
+.common-field--full-width,
+.common-control--full-width {
+  width: 100%;
+}
+
+.common-field__label,
+.radio-group legend {
+  display: block;
+  margin-bottom: 7px;
+  color: #244745;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.common-field__required {
+  color: #b53b3b;
+}
+
+.common-control {
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid #b8c8c6;
+  border-radius: 5px;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  font-size: 14px;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.common-control:hover:not(:disabled) {
+  border-color: #7d9b98;
+}
+
+.common-control:focus-visible,
+.common-choice__input:focus-visible {
+  outline: 3px solid rgba(28, 111, 107, 0.3);
+  outline-offset: 2px;
+  transition: outline-color 180ms ease, box-shadow 180ms ease;
+}
+
+.common-control:disabled {
+  cursor: not-allowed;
+  background: #eef2f1;
+  color: #71807e;
+}
+
+.common-control[readonly] {
+  background: #f8faf9;
+}
+
+.common-control--error {
+  border-color: #b53b3b;
+}
+
+.common-control--textarea {
+  display: block;
+  min-height: 100px;
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.common-field__message {
+  margin: 6px 0 0;
+  color: #637371;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.common-field__message--error {
+  color: #922f2f;
+  font-weight: 700;
+}
+
+.common-field__message--error,
+.common-field__message--warning,
+.common-field__message--success {
+  animation: form-message-enter 180ms ease-out;
+}
+
+.common-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 40px;
+  padding: 9px 10px;
+  border-radius: 5px;
+  color: #244745;
+  cursor: pointer;
+}
+
+.common-choice:hover {
+  background: #edf6f4;
+}
+
+.common-choice__input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  margin: 1px 0 0;
+  accent-color: #1c6f6b;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.common-choice__input:checked {
+  transform: scale(1.08);
+}
+
+.common-choice__input:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+.common-choice__label {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.radio-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+@keyframes form-message-enter {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .common-control,
+  .common-choice__input,
+  .common-field__message,
+  .common-switch__track,
+  .common-switch__thumb,
+  .common-input__action,
+  .common-upload,
+  .common-range input {
+    transition: none;
+    animation: none;
+  }
+}
