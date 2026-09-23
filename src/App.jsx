@@ -6,6 +6,7 @@ import Buttons from './pages/Buttons/Buttons'
 import FiltersPage from './pages/Filters/FiltersPage'
 import Forms from './pages/Forms/Forms'
 import HeaderPage from './pages/Header/HeaderPage'
+import LoginPage from './pages/Login/LoginPage'
 import ModalsPage from './pages/Modals/Modals'
 import NotificationsPage from './pages/Notifications/Notifications'
 import SearchPage from './pages/Search/SearchPage'
@@ -51,6 +52,7 @@ const initialNotifications = [
 ]
 
 function PagePreview({ activePage }) {
+  if (activePage === 'login') return <LoginPage />
   if (activePage === 'header') return <HeaderPage />
   if (activePage === 'tables') return <TablesPage />
   if (activePage === 'theme') return <ThemeConfigPage />
@@ -73,7 +75,7 @@ function PagePreview({ activePage }) {
   )
 }
 
-const pagesWithOwnHeaderDemo = new Set(['header', 'sidebar'])
+const pagesWithoutAppShellHeader = new Set(['header', 'sidebar', 'login'])
 
 export default function App() {
   const [activePage, setActivePage] = useState('theme')
@@ -89,14 +91,13 @@ export default function App() {
         Skip to content
       </a>
 
-      {!pagesWithOwnHeaderDemo.has(activePage) && (
+      {!pagesWithoutAppShellHeader.has(activePage) && (
         <Header
           appName="Airtecture"
           appLogo="CA"
           user={user}
           profileFields={profileFields}
           notificationCount={notifications.filter((item) => !item.isRead).length}
-          notifications={notifications}
           onNotificationsClick={() => setNotifications((items) => items.map((item) => ({ ...item, isRead: true })))}
           onProfileClick={() => undefined}
           onLogout={() => undefined}

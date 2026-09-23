@@ -57,6 +57,14 @@
   border-color: #b53b3b;
 }
 
+.common-control--warning {
+  border-color: #92720f;
+}
+
+.common-control--success {
+  border-color: #2f7a4f;
+}
+
 .common-control--textarea {
   display: block;
   min-height: 100px;
@@ -76,10 +84,104 @@
   font-weight: 700;
 }
 
+.common-field__message--warning {
+  color: #7a5d0c;
+  font-weight: 700;
+}
+
+.common-field__message--success {
+  color: #256640;
+  font-weight: 700;
+}
+
 .common-field__message--error,
 .common-field__message--warning,
 .common-field__message--success {
   animation: form-message-enter 180ms ease-out;
+}
+
+.common-field__counter {
+  display: block;
+  margin-top: 4px;
+  color: #71807e;
+  font-size: 12px;
+  text-align: right;
+}
+
+/* =========================================================
+   Input wrapper — affixes, icons, clear/password-toggle action
+   ========================================================= */
+
+.common-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.common-input .common-control {
+  flex: 1;
+  width: 100%;
+}
+
+.common-input--sm .common-control {
+  min-height: 36px;
+  font-size: 13px;
+}
+
+.common-input--lg .common-control {
+  min-height: 48px;
+  font-size: 15px;
+}
+
+.common-input__affix {
+  flex: 0 0 auto;
+  padding: 0 10px;
+  color: #637371;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.common-input__icon {
+  position: absolute;
+  left: 12px;
+  display: inline-flex;
+  color: #637371;
+  pointer-events: none;
+}
+
+.common-input__icon--right {
+  left: auto;
+  right: 12px;
+}
+
+.common-control--has-left-icon {
+  padding-left: 38px;
+}
+
+.common-control--has-right-icon {
+  padding-right: 38px;
+}
+
+.common-input__action {
+  position: absolute;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #637371;
+  cursor: pointer;
+}
+
+.common-input__action:hover {
+  background: #edf6f4;
+  color: #1c6f6b;
 }
 
 .common-choice {
@@ -124,6 +226,132 @@
   margin: 0;
   padding: 0;
   border: 0;
+}
+
+/* =========================================================
+   Switch
+   ========================================================= */
+
+.common-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.common-switch__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.common-switch__track {
+  position: relative;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 22px;
+  border-radius: 999px;
+  background: #b8c8c6;
+  transition: background-color 160ms ease;
+}
+
+.common-switch__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: transform 160ms ease;
+}
+
+.common-switch__input:checked ~ .common-switch__track {
+  background: #1c6f6b;
+}
+
+.common-switch__input:checked ~ .common-switch__track .common-switch__thumb {
+  transform: translateX(18px);
+}
+
+.common-switch__input:focus-visible ~ .common-switch__track {
+  outline: 3px solid rgba(28, 111, 107, 0.3);
+  outline-offset: 2px;
+}
+
+.common-switch__input:disabled ~ .common-switch__track {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   File upload
+   ========================================================= */
+
+.common-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 24px 16px;
+  border: 1px dashed #b8c8c6;
+  border-radius: 8px;
+  background: #f8faf9;
+  color: #244745;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.common-upload:hover {
+  border-color: #1c6f6b;
+  background: #edf6f4;
+}
+
+.common-upload strong {
+  font-size: 14px;
+}
+
+.common-upload small {
+  color: #637371;
+  font-size: 12px;
+}
+
+.common-upload input[type='file'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* =========================================================
+   Range slider
+   ========================================================= */
+
+.common-range {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.common-range input[type='range'] {
+  flex: 1;
+  accent-color: #1c6f6b;
+}
+
+.common-range output {
+  min-width: 32px;
+  color: #244745;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: right;
 }
 
 @keyframes form-message-enter {

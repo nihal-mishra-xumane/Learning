@@ -1,0 +1,125 @@
+/* =========================================================
+   Login
+   Self-contained login form. Classes are prefixed with
+   `common-login` so they cannot collide with a host app's CSS.
+   ========================================================= */
+
+.common-login {
+  --login-bg: #f7f9f8;
+  --login-card-bg: #ffffff;
+  --login-border: #e2e8e7;
+  --login-text: #16302e;
+  --login-muted: #637371;
+  --login-primary: #1c6f6b;
+  --login-error: #922f2f;
+  --login-error-bg: #fdf1f1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 32px 16px;
+  background: var(--login-bg);
+}
+
+.common-login__card {
+  width: 100%;
+  max-width: 380px;
+  padding: 32px;
+  border: 1px solid var(--login-border);
+  border-radius: 12px;
+  background: var(--login-card-bg);
+  box-shadow: 0 10px 30px rgba(15, 40, 38, 0.06);
+}
+
+.common-login__brand {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.common-login__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--login-primary);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.common-login__title {
+  margin: 0 0 6px;
+  color: var(--login-text);
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.common-login__subtitle {
+  margin: 0 0 24px;
+  color: var(--login-muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+.common-login__error {
+  margin: 0 0 16px;
+  padding: 10px 12px;
+  border: 1px solid #f3c2c2;
+  border-radius: 6px;
+  background: var(--login-error-bg);
+  color: var(--login-error);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.common-login__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.common-login__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px 0 20px;
+}
+
+.common-login__link {
+  border: 0;
+  background: transparent;
+  color: var(--login-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.common-login__link:hover {
+  text-decoration: underline;
+}
+
+.common-login__link:disabled {
+  color: var(--login-muted);
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.common-login__signup {
+  margin: 20px 0 0;
+  color: var(--login-muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 420px) {
+  .common-login__card {
+    padding: 24px 20px;
+  }
+}

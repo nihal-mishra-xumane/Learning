@@ -162,32 +162,32 @@ export default function DataTable({
     if (loading) {
       return Array.from({ length: Math.min(activePageSize, 5) }, (_, index) => (
         <tr key={`loading-${index}`}>
-          <td colSpan={columnCount}><span className="table-skeleton" /></td>
+          <td colSpan={columnCount}><span className="data-table__skeleton" /></td>
         </tr>
       ))
     }
     if (error) {
-      return <tr><td colSpan={columnCount} className="table-state table-error" role="alert">
+      return <tr><td colSpan={columnCount} className="data-table__state data-table__error" role="alert">
         <strong>Unable to load records</strong>
         <span>{typeof error === 'string' ? error : error.message ?? 'Something went wrong.'}</span>
         {onRetry && <Button variant="secondary" onClick={onRetry}>Try again</Button>}
       </td></tr>
     }
     if (!visibleRows.length) {
-      return <tr><td colSpan={columnCount} className="table-state">
+      return <tr><td colSpan={columnCount} className="data-table__state">
         {hasActiveFilters ? noResultsMessage : emptyMessage}
       </td></tr>
     }
     return visibleRows.map(({ row, id }, rowIndex) => {
-      return <tr key={id} className={selectedIds.has(id) ? 'is-selected' : ''}>
-        {selectable && <td className="table-selection"><SelectionCheckbox label={`Select row ${rowIndex + 1}`} checked={selectedIds.has(id)} onChange={() => toggleRow(id)} /></td>}
-        {visibleColumns.map((column) => <td key={column.key} style={{ width: column.width, minWidth: column.minWidth }} className={`align-${column.align ?? 'left'}`}>
+      return <tr key={id} className={selectedIds.has(id) ? 'data-table__row--selected' : ''}>
+        {selectable && <td className="data-table__selection"><SelectionCheckbox label={`Select row ${rowIndex + 1}`} checked={selectedIds.has(id)} onChange={() => toggleRow(id)} /></td>}
+        {visibleColumns.map((column) => <td key={column.key} style={{ width: column.width, minWidth: column.minWidth }} className={`data-table__cell--${column.align ?? 'left'}`}>
           {column.render ? column.render(getValue(row, column), row) : getValue(row, column) ?? '—'}
         </td>)}
-        {rowActions.length > 0 && <td className="table-actions">
+        {rowActions.length > 0 && <td className="data-table__actions">
           {rowActions.map((action) => {
             if (action.hidden?.(row)) return null
-            return <button key={action.label} type="button" className="icon-button" aria-label={action.label} title={action.label} disabled={action.disabled?.(row)} onClick={() => action.onClick(row)}>
+            return <button key={action.label} type="button" className="data-table__icon-button" aria-label={action.label} title={action.label} disabled={action.disabled?.(row)} onClick={() => action.onClick(row)}>
               {action.icon ?? <MoreHorizontal size={18} aria-hidden="true" />}
             </button>
           })}
@@ -197,33 +197,33 @@ export default function DataTable({
   }
 
   return <div className="data-table">
-    <div className="table-scroll" tabIndex="0" aria-busy={loading}>
+    <div className="data-table__scroll" tabIndex="0" aria-busy={loading}>
       <table aria-label={tableLabel}>
         <thead>
           <tr>
-            {selectable && <th className="table-selection"><SelectionCheckbox label="Select all visible rows" checked={allVisibleSelected} indeterminate={someVisibleSelected} disabled={!rowIds.length || loading} onChange={toggleAllVisible} /></th>}
-            {visibleColumns.map((column) => <th key={column.key} scope="col" style={{ width: column.width, minWidth: column.minWidth }} className={`align-${column.align ?? 'left'}`} aria-sort={column.sortable ? activeSort?.key === column.key ? activeSort.direction === 'asc' ? 'ascending' : 'descending' : 'none' : undefined}>
-              {column.sortable ? <button type="button" className="sort-button" onClick={() => changeSort(column.key)} aria-label={`Sort by ${column.label}${activeSort?.key === column.key ? `, currently ${activeSort.direction === 'asc' ? 'ascending' : 'descending'}` : ''}`}>
+            {selectable && <th className="data-table__selection"><SelectionCheckbox label="Select all visible rows" checked={allVisibleSelected} indeterminate={someVisibleSelected} disabled={!rowIds.length || loading} onChange={toggleAllVisible} /></th>}
+            {visibleColumns.map((column) => <th key={column.key} scope="col" style={{ width: column.width, minWidth: column.minWidth }} className={`data-table__cell--${column.align ?? 'left'}`} aria-sort={column.sortable ? activeSort?.key === column.key ? activeSort.direction === 'asc' ? 'ascending' : 'descending' : 'none' : undefined}>
+              {column.sortable ? <button type="button" className="data-table__sort-button" onClick={() => changeSort(column.key)} aria-label={`Sort by ${column.label}${activeSort?.key === column.key ? `, currently ${activeSort.direction === 'asc' ? 'ascending' : 'descending'}` : ''}`}>
                 <span>{column.label}</span><SortIndicator direction={activeSort?.key === column.key ? activeSort.direction : null} />
               </button> : column.label}
             </th>)}
-            {rowActions.length > 0 && <th scope="col" className="table-actions">{actionsLabel}</th>}
+            {rowActions.length > 0 && <th scope="col" className="data-table__actions">{actionsLabel}</th>}
           </tr>
         </thead>
         <tbody>{renderState()}</tbody>
       </table>
     </div>
-    <div className="pagination" aria-label="Pagination">
+    <div className="data-table__pagination" aria-label="Pagination">
       <label>Rows per page <select value={activePageSize} onChange={(event) => changePageSize(event.target.value)}>
         {pageSizeOptions.map((size) => <option key={size} value={size}>{size}</option>)}
       </select></label>
-      <span className="pagination-summary">{itemCount ? `${(safePage - 1) * activePageSize + 1}-${Math.min(safePage * activePageSize, itemCount)} of ${itemCount}` : '0 records'}</span>
-      <div className="pagination-buttons">
-        <button type="button" className="icon-button" aria-label="First page" disabled={safePage === 1 || loading} onClick={() => changePage(1)}><ChevronsLeft size={18} aria-hidden="true" /></button>
-        <button type="button" className="icon-button" aria-label="Previous page" disabled={safePage === 1 || loading} onClick={() => changePage(safePage - 1)}><ChevronLeft size={18} aria-hidden="true" /></button>
+      <span className="data-table__pagination-summary">{itemCount ? `${(safePage - 1) * activePageSize + 1}-${Math.min(safePage * activePageSize, itemCount)} of ${itemCount}` : '0 records'}</span>
+      <div className="data-table__pagination-buttons">
+        <button type="button" className="data-table__icon-button" aria-label="First page" disabled={safePage === 1 || loading} onClick={() => changePage(1)}><ChevronsLeft size={18} aria-hidden="true" /></button>
+        <button type="button" className="data-table__icon-button" aria-label="Previous page" disabled={safePage === 1 || loading} onClick={() => changePage(safePage - 1)}><ChevronLeft size={18} aria-hidden="true" /></button>
         <span aria-live="polite">Page {safePage} of {totalPages}</span>
-        <button type="button" className="icon-button" aria-label="Next page" disabled={safePage === totalPages || loading} onClick={() => changePage(safePage + 1)}><ChevronRight size={18} aria-hidden="true" /></button>
-        <button type="button" className="icon-button" aria-label="Last page" disabled={safePage === totalPages || loading} onClick={() => changePage(totalPages)}><ChevronsRight size={18} aria-hidden="true" /></button>
+        <button type="button" className="data-table__icon-button" aria-label="Next page" disabled={safePage === totalPages || loading} onClick={() => changePage(safePage + 1)}><ChevronRight size={18} aria-hidden="true" /></button>
+        <button type="button" className="data-table__icon-button" aria-label="Last page" disabled={safePage === totalPages || loading} onClick={() => changePage(totalPages)}><ChevronsRight size={18} aria-hidden="true" /></button>
       </div>
     </div>
   </div>

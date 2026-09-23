@@ -1,27 +1,28 @@
 /* =========================================================
    Data Table
    Reusable styling — self-contained, safe to copy with the
-   component into another app.
+   component into another app. All classes are prefixed with
+   `data-table__` so they cannot collide with a host app's CSS.
    ========================================================= */
 
 .data-table {
-  --table-bg: #ffffff;
-  --table-border: #e4e4e4;
-  --table-header-bg: #f8fafc;
-  --table-text: #1f2937;
-  --table-muted: #687386;
-  --table-primary: #1769aa;
-  --table-row-hover: #f8fafc;
-  --table-row-selected: #edf7ff;
+  --data-table-bg: #ffffff;
+  --data-table-border: #e4e4e4;
+  --data-table-header-bg: #f8fafc;
+  --data-table-text: #1f2937;
+  --data-table-muted: #687386;
+  --data-table-primary: #1769aa;
+  --data-table-row-hover: #f8fafc;
+  --data-table-row-selected: #edf7ff;
 
   width: 100%;
-  border: 1px solid var(--table-border);
+  border: 1px solid var(--data-table-border);
   border-radius: 8px;
-  background: var(--table-bg);
+  background: var(--data-table-bg);
   overflow: hidden;
 }
 
-.table-scroll {
+.data-table__scroll {
   width: 100%;
   overflow-x: auto;
 }
@@ -30,25 +31,25 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
-  color: var(--table-text);
+  color: var(--data-table-text);
 }
 
 .data-table th,
 .data-table td {
   padding: 12px 16px;
   text-align: left;
-  border-bottom: 1px solid var(--table-border);
+  border-bottom: 1px solid var(--data-table-border);
   white-space: nowrap;
 }
 
-.data-table th.align-right,
-.data-table td.align-right {
+.data-table th.data-table__cell--right,
+.data-table td.data-table__cell--right {
   text-align: right;
 }
 
 .data-table thead th {
-  background: var(--table-header-bg);
-  color: var(--table-muted);
+  background: var(--data-table-header-bg);
+  color: var(--data-table-muted);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -56,18 +57,18 @@
 }
 
 .data-table tbody tr:hover {
-  background: var(--table-row-hover);
+  background: var(--data-table-row-hover);
 }
 
-.data-table tbody tr.is-selected {
-  background: var(--table-row-selected);
+.data-table tbody tr.data-table__row--selected {
+  background: var(--data-table-row-selected);
 }
 
 .data-table tbody tr:last-child td {
   border-bottom: none;
 }
 
-.sort-button {
+.data-table__sort-button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -82,21 +83,21 @@
   cursor: pointer;
 }
 
-.sort-button:hover {
-  color: var(--table-primary);
+.data-table__sort-button:hover {
+  color: var(--data-table-primary);
 }
 
-.table-selection {
+.data-table__selection {
   width: 44px;
 }
 
-.table-actions {
+.data-table__actions {
   width: 1%;
   text-align: right;
   white-space: nowrap;
 }
 
-.icon-button {
+.data-table__icon-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -106,80 +107,80 @@
   border: 1px solid transparent;
   border-radius: 6px;
   background: transparent;
-  color: var(--table-muted);
+  color: var(--data-table-muted);
   cursor: pointer;
   transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
-.icon-button:not(:disabled):hover {
+.data-table__icon-button:not(:disabled):hover {
   background: #eff6ff;
-  color: var(--table-primary);
+  color: var(--data-table-primary);
   border-color: #bfdbfe;
 }
 
-.icon-button:disabled {
+.data-table__icon-button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
 }
 
-.table-state {
+.data-table__state {
   padding: 32px 16px;
-  color: var(--table-muted);
+  color: var(--data-table-muted);
   text-align: center;
   white-space: normal;
 }
 
-.table-error {
+.data-table__error {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
 
-.table-skeleton {
+.data-table__skeleton {
   display: block;
   height: 14px;
   border-radius: 4px;
   background: linear-gradient(90deg, #eef1f5 25%, #e2e8f0 37%, #eef1f5 63%);
   background-size: 400% 100%;
-  animation: table-skeleton-pulse 1.4s ease infinite;
+  animation: data-table-skeleton-pulse 1.4s ease infinite;
 }
 
-@keyframes table-skeleton-pulse {
+@keyframes data-table-skeleton-pulse {
   0% { background-position: 100% 50%; }
   100% { background-position: 0 50%; }
 }
 
-.pagination {
+.data-table__pagination {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
   padding: 12px 16px;
-  border-top: 1px solid var(--table-border);
-  color: var(--table-muted);
+  border-top: 1px solid var(--data-table-border);
+  color: var(--data-table-muted);
   font-size: 13px;
 }
 
-.pagination label {
+.data-table__pagination label {
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.pagination select {
+.data-table__pagination select {
   padding: 4px 6px;
-  border: 1px solid var(--table-border);
+  border: 1px solid var(--data-table-border);
   border-radius: 6px;
   font: inherit;
 }
 
-.pagination-summary {
+.data-table__pagination-summary {
   flex: 1;
 }
 
-.pagination-buttons {
+.data-table__pagination-buttons {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -191,7 +192,7 @@
     padding: 10px 12px;
   }
 
-  .pagination {
+  .data-table__pagination {
     justify-content: center;
     text-align: center;
   }

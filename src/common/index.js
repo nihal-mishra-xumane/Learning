@@ -12,6 +12,7 @@ export { default as Switch } from './Forms/Switch'
 export { default as Textarea } from './Forms/Textarea'
 
 export { default as Header } from './Header/header'
+export { default as Login } from './Login/Login'
 export { default as Sidebar } from './Sidebar/Sidebar'
 export { default as StatusBadge } from './StatusBadges/StatusBadge'
 export { default as DataTable } from './DataTable'
