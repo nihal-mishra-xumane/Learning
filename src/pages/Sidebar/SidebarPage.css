@@ -1,34 +1,42 @@
-.sidebar-experience {
+.sidebar-preview {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  height: 620px;
+  margin-top: 20px;
+  border: 1px solid #e4e4e4;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.sidebar-demo {
-  display: flex;
-  flex: 1;
-  min-height: 0;
+/* Sidebar is designed to fill the viewport (min-height: 100vh) when it's a
+   real app's nav. Here it's only a bordered preview, so contain it to the
+   preview frame's own height instead. */
+.sidebar-preview .sidebar {
+  min-height: 100%;
 }
 
-.sidebar-demo-content {
+.sidebar-preview__content {
   position: relative;
   flex: 1;
   min-width: 0;
-  padding: 40px;
+  overflow-y: auto;
+  padding: 32px;
 }
 
-.sidebar-demo-content h1 {
-  margin: 8px 0 10px;
-  font-size: 28px;
+.sidebar-preview__content h2 {
+  margin: 8px 0 16px;
+  font-size: 22px;
 }
 
-.sidebar-demo-copy {
-  margin: 0 0 20px;
-  max-width: 520px;
-  color: #687386;
+.sidebar-preview__eyebrow {
+  margin: 0;
+  color: #1769aa;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.sidebar-demo-status {
+.sidebar-preview__status {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -40,7 +48,7 @@
   font-weight: 600;
 }
 
-.sidebar-demo-status span {
+.sidebar-preview__status span {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -58,7 +66,8 @@
   cursor: pointer;
 }
 
-@media (max-width: 900px) {
+/* Matches the breakpoint Sidebar itself switches to an off-canvas drawer at. */
+@media (max-width: 720px) {
   .mobile-menu-button {
     display: inline-flex;
   }

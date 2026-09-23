@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { BarChart3, Bell, Boxes, CircleHelp, FileBarChart, FileText, FolderKanban, FolderOpen, Globe2, Home, Layers3, Link2, LogOut, Moon, Settings, ShieldCheck, Sun, Users, Workflow } from 'lucide-react'
-import Header from '../../common/Header/header'
 import Sidebar from '../../common/Sidebar/Sidebar'
 import './SidebarPage.css'
 
@@ -109,21 +108,12 @@ export default function SidebarPage() {
   const user = { name: 'Workspace member', role: 'Manager', initials: 'WM' }
 
   return (
-    <div className="sidebar-experience">
-      <Header
-        appName="PlansStudio"
-        user={user}
-        profileFields={[{ key: 'role', label: 'Role' }]}
-        notificationCount={notificationTotal}
-        onNotificationsClick={() => navigate('/notifications/mentions')}
-        onLogoClick={() => navigate('/overview')}
-        showNotifications
-        showProfile
-        showUserName
-        showLogout
-        showProfileAction
-      />
-      <div className="sidebar-demo">
+    <div className="page-heading">
+      <p className="eyebrow">Common / Sidebar</p>
+      <h1>Sidebar</h1>
+      <p>A responsive navigation system with nested sections, active routes, and permission-aware menu visibility.</p>
+
+      <div className="sidebar-preview">
         <Sidebar
           items={menuItems}
           activePath={activePath}
@@ -135,19 +125,17 @@ export default function SidebarPage() {
           role="manager"
           permissions={['team:read']}
           theme={theme}
-          showBrand={false}
           user={user}
           footerItems={footerItems}
           onFooterNavigate={(item) => {
             if (item.id === 'theme') setTheme((current) => current === 'dark' ? 'light' : 'dark')
           }}
         />
-        <main className="sidebar-demo-content">
+        <main className="sidebar-preview__content">
           <button className="mobile-menu-button" type="button" onClick={() => setMobileOpen(true)}>Menu</button>
-          <p className="eyebrow">Route: {activePath}</p>
-          <h1>{activeLabel}</h1>
-          <p className="sidebar-demo-copy">A responsive navigation system with nested sections, active routes, and permission-aware menu visibility.</p>
-          <div className="sidebar-demo-status"><span /> Navigation is ready</div>
+          <p className="sidebar-preview__eyebrow">Route: {activePath}</p>
+          <h2>{activeLabel}</h2>
+          <div className="sidebar-preview__status"><span /> Navigation is ready</div>
         </main>
       </div>
     </div>

@@ -75,8 +75,6 @@ function PagePreview({ activePage }) {
   )
 }
 
-const pagesWithoutAppShellHeader = new Set(['header', 'sidebar', 'login'])
-
 export default function App() {
   const [activePage, setActivePage] = useState('theme')
   const [notifications, setNotifications] = useState(initialNotifications)
@@ -87,26 +85,24 @@ export default function App() {
         Skip to content
       </a>
 
-      {!pagesWithoutAppShellHeader.has(activePage) && (
-        <Header
-          appName="Airtecture"
-          appLogo="CA"
-          user={user}
-          profileFields={profileFields}
-          notificationCount={notifications.filter((item) => !item.isRead).length}
-          onNotificationsClick={() => setNotifications((items) => items.map((item) => ({ ...item, isRead: true })))}
-          onProfileClick={() => undefined}
-          onLogout={() => undefined}
-          onLogoClick={() => setActivePage('theme')}
-          showNotifications
-          showProfile
-          showUserName
-          showLogout
-          showProfileAction
-        >
-          <ThemeToggle iconOnly label="Colour theme" />
-        </Header>
-      )}
+      <Header
+        appName="Airtecture"
+        appLogo="CA"
+        user={user}
+        profileFields={profileFields}
+        notificationCount={notifications.filter((item) => !item.isRead).length}
+        onNotificationsClick={() => setNotifications((items) => items.map((item) => ({ ...item, isRead: true })))}
+        onProfileClick={() => undefined}
+        onLogout={() => undefined}
+        onLogoClick={() => setActivePage('theme')}
+        showNotifications
+        showProfile
+        showUserName
+        showLogout
+        showProfileAction
+      >
+        <ThemeToggle iconOnly label="Colour theme" />
+      </Header>
 
       <div className="app-body">
         <nav className="navigation" aria-label="Application pages">
