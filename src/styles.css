@@ -42,7 +42,6 @@
 .navigation {
   display: flex;
   flex-direction: column;
-  gap: var(--ui-space-1);
   flex: 0 0 var(--ui-size-sidebar);
   width: var(--ui-size-sidebar);
   padding: var(--ui-space-5) var(--ui-space-4);
@@ -50,7 +49,31 @@
   border-right: var(--ui-border-width-hairline) solid var(--ui-color-border-subtle);
 }
 
-.navigation button {
+.navigation__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--ui-space-4);
+  padding: 0 var(--ui-space-4);
+  color: var(--ui-color-text-primary);
+}
+
+.navigation__count {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--ui-color-bg-selected);
+  color: var(--ui-color-primary-soft-text);
+  font-size: var(--ui-font-size-sm, 12px);
+  font-weight: var(--ui-font-weight-medium);
+}
+
+.navigation-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-1);
+}
+
+.navigation__item {
   display: flex;
   align-items: center;
   min-height: var(--ui-size-control-sm);
@@ -66,12 +89,12 @@
     color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard);
 }
 
-.navigation button:hover {
+.navigation__item:hover {
   background: var(--ui-color-bg-hover);
   color: var(--ui-color-text-primary);
 }
 
-.navigation button.active {
+.navigation__item--active {
   background: var(--ui-color-bg-selected);
   color: var(--ui-color-primary-soft-text);
   font-weight: var(--ui-font-weight-medium);
@@ -137,6 +160,87 @@
 .section-heading h2 {
   margin: 0 0 6px;
   font-size: 18px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.section-kicker {
+  display: block;
+  margin-bottom: 4px;
+  color: #1769aa;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Shared "showcase" page shell used by the Buttons and Forms demo pages. */
+
+.showcase-page {
+  max-width: 1040px;
+}
+
+.buttons-page__header,
+.forms-page__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.page-header__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #f0f4f8;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16a34a;
+}
+
+.status-dot--blue {
+  background: #1769aa;
+}
+
+.showcase-card {
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid #e4e4e4;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.showcase-card--dark {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #f1f5f9;
+}
+
+.showcase-card--dark .section-heading h2 {
+  color: #f1f5f9;
+}
+
+.showcase-card--dark .section-heading p,
+.showcase-card--dark .section-kicker {
+  color: #94a3b8;
 }
 
 .badge-row {
@@ -227,6 +331,7 @@
   .app-shell {
     display: block;
   }
+}
 
 /* Tablet: narrower rail. */
 @media (max-width: 1023px) {
@@ -253,14 +358,21 @@
     flex: 0 0 auto;
     width: 100%;
     max-width: none;
-    flex-direction: row;
-    overflow-x: auto;
     padding: var(--ui-space-3) var(--ui-space-4);
     border-right: 0;
     border-bottom: var(--ui-border-width-hairline) solid var(--ui-color-border-subtle);
   }
 
-  .navigation button {
+  .navigation__header {
+    margin-bottom: var(--ui-space-2);
+  }
+
+  .navigation-list {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .navigation__item {
     white-space: nowrap;
   }
 

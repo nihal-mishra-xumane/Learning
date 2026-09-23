@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { BarChart3, Bell, Boxes, CircleHelp, FileBarChart, FileText, FolderKanban, FolderOpen, Globe2, Home, Layers3, Link2, LogOut, Moon, Settings, ShieldCheck, Sun, Users, Workflow } from 'lucide-react'
 import Header from '../../common/Header/header'
 import Sidebar from '../../common/Sidebar/Sidebar'
+import './SidebarPage.css'
 
 const notificationCategories = [
   { id: 'mentions', label: 'Mentions', path: '/notifications/mentions', icon: Bell, count: 4 },

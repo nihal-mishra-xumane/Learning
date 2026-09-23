@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { ErrorBoundary } from './common/components'
 import Header from './common/Header/header'
 import { ThemeToggle } from './common/theme'
@@ -80,13 +80,9 @@ const pagesWithoutAppShellHeader = new Set(['header', 'sidebar', 'login'])
 export default function App() {
   const [activePage, setActivePage] = useState('theme')
   const [notifications, setNotifications] = useState(initialNotifications)
-  const selectedPage = useMemo(
-    () => pageConfig.find((page) => page.id === activePage) || pageConfig[0],
-    [activePage],
-  )
 
   return (
-    <div className="app-shell app-shell--light">
+    <div className="app-shell">
       <a className="ui-skip-link" href="#main-content">
         Skip to content
       </a>
@@ -134,19 +130,9 @@ export default function App() {
         </nav>
 
         <main className="content" id="main-content" tabIndex={-1}>
-          <div className="content__header">
-            <div>
-              <p className="content__eyebrow">Common components</p>
-              <h1 className="content__title">{selectedPage.label}</h1>
-              <p className="content__description">{selectedPage.description}</p>
-            </div>
-            <span className="content__status">Active</span>
-          </div>
-          <div className="content__card">
-            <ErrorBoundary key={activePage}>
-              <PagePreview activePage={activePage} />
-            </ErrorBoundary>
-          </div>
+          <ErrorBoundary key={activePage}>
+            <PagePreview activePage={activePage} />
+          </ErrorBoundary>
         </main>
       </div>
     </div>

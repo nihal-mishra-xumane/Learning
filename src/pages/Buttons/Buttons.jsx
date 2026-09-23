@@ -1,5 +1,6 @@
 import { ArrowDownToLine, ArrowRight, Check, CirclePlus, Edit3, Filter, MoreHorizontal, Save, Search, Settings, Trash2 } from 'lucide-react'
 import { Button } from '../../common'
+import './Buttons.css'
 
 export default function Buttons() {
   return (

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CalendarDays, Check, FileText, Mail, Search, UserRound } from 'lucide-react'
 import { Button, Checkbox, DatePicker, FileUpload, Input, Radio, RangeSlider, Select, Switch, Textarea } from '../../common'
+import './Forms.css'
 
 const departmentOptions = [
   { label: 'Commercial', options: [{ label: 'Sales', value: 'sales' }, { label: 'Procurement', value: 'procurement' }] },
