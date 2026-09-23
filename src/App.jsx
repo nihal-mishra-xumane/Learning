@@ -3,8 +3,12 @@ import Header from './common/Header/header'
 import Buttons from './pages/Buttons/Buttons'
 import FiltersPage from './pages/Filters/FiltersPage'
 import Forms from './pages/Forms/Forms'
+import ModalsPage from './pages/Modals/Modals'
+import NotificationsPage from './pages/Notifications/Notifications'
 import SearchPage from './pages/Search/SearchPage'
 import SidebarPage from './pages/Sidebar/SidebarPage'
+import StatusBadgesPage from './pages/StatusBadges/StatusBadgesPage'
+import TabsPage from './pages/Tabs/Tabs'
 import './styles.css'
 
 const pageConfig = [
@@ -18,6 +22,8 @@ const pageConfig = [
   { id: 'filters', label: 'Filters', description: 'Reusable filter controls.' },
   { id: 'search', label: 'Search', description: 'Reusable search components.' },
   { id: 'tabs', label: 'Tabs', description: 'Reusable tab navigation components.' },
+  { id: 'modals', label: 'Modals', description: 'Reusable dialog and modal components.' },
+  { id: 'notifications', label: 'Notifications', description: 'Reusable alerts, toasts, and notification panels.' },
   { id: 'status-badges', label: 'Status badges', description: 'Reusable status and label components.' },
 ]
 
@@ -45,6 +51,10 @@ function PagePreview({ activePage }) {
   if (activePage === 'filters') return <FiltersPage />
   if (activePage === 'search') return <SearchPage />
   if (activePage === 'sidebar') return <SidebarPage />
+  if (activePage === 'tabs') return <TabsPage />
+  if (activePage === 'modals') return <ModalsPage />
+  if (activePage === 'notifications') return <NotificationsPage />
+  if (activePage === 'status-badges') return <StatusBadgesPage />
 
   const page = pageConfig.find((item) => item.id === activePage) || pageConfig[0]
   return (
@@ -63,10 +73,6 @@ export default function App() {
     [activePage],
   )
 
-  const handleNotificationsClick = () => {
-    setNotifications((items) => items.map((item) => ({ ...item, isRead: true })))
-  }
-
   return (
     <div className="app-shell app-shell--light">
       <Header
@@ -76,7 +82,7 @@ export default function App() {
         profileFields={profileFields}
         notificationCount={notifications.filter((item) => !item.isRead).length}
         notifications={notifications}
-        onNotificationsClick={handleNotificationsClick}
+        onNotificationsClick={() => setNotifications((items) => items.map((item) => ({ ...item, isRead: true })))}
         onProfileClick={() => undefined}
         onLogout={() => undefined}
         onLogoClick={() => setActivePage('theme')}

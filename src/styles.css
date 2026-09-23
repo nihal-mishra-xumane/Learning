@@ -1,778 +1,206 @@
-/* ==================================================
-   Global design tokens
-================================================== */
-
 :root {
-  /* Typography */
-  --app-font-family: Arial, sans-serif;
-  --app-font-size: 16px;
-  --app-line-height: 1.5;
-
-  /* Main colors */
-  --app-text-color: #222222;
-  --app-text-muted: #64748b;
-  --app-page-background: #f8fafc;
-  --app-surface-color: #ffffff;
-
-  /* Brand colors */
-  --app-primary-color: #3730a3;
-  --app-primary-background: #e0e7ff;
-  --app-primary-border: #818cf8;
-
-  /* Borders */
-  --app-border-color: #e2e8f0;
-  --app-border-width: 1px;
-  --app-border-style: solid;
-
-  /* Layout */
-  --app-header-height: 72px;
-  --app-navigation-width: 220px;
-  --app-content-padding: 32px;
-
-  /* Spacing */
-  --app-spacing-xs: 4px;
-  --app-spacing-sm: 8px;
-  --app-spacing-md: 16px;
-  --app-spacing-lg: 24px;
-  --app-spacing-xl: 32px;
-
-  /* Radius */
-  --app-radius-sm: 6px;
-  --app-radius-md: 10px;
-  --app-radius-lg: 12px;
-
-  /* Shadows */
-  --app-shadow-none: none;
-  --app-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
-  --app-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.12);
-
-  /* Motion */
-  --app-transition-fast: 160ms ease;
-  --app-transition-normal: 240ms ease;
-
-  /* Accessibility */
-  --app-focus-width: 2px;
-  --app-focus-offset: 2px;
+  font-family: Arial, sans-serif;
+  color: #222;
+  background: #f7f7f7;
 }
 
-
-/* ==================================================
-   Optional theme modifiers
-================================================== */
-
-/* Dark theme */
-.app-shell--dark {
-  --app-text-color: #f8fafc;
-  --app-text-muted: #cbd5e1;
-  --app-page-background: #0f172a;
-  --app-surface-color: #1e293b;
-  --app-primary-color: #c7d2fe;
-  --app-primary-background: #3730a3;
-  --app-primary-border: #a5b4fc;
-  --app-border-color: #334155;
-}
-
-
-/* Compact layout */
-.app-shell--compact {
-  --app-header-height: 60px;
-  --app-navigation-width: 190px;
-  --app-content-padding: 20px;
-  --app-spacing-lg: 16px;
-  --app-spacing-xl: 24px;
-}
-
-
-/* Spacious layout */
-.app-shell--spacious {
-  --app-header-height: 80px;
-  --app-navigation-width: 260px;
-  --app-content-padding: 40px;
-  --app-spacing-lg: 32px;
-  --app-spacing-xl: 40px;
-}
-
-
-/* Rounded layout */
-.app-shell--rounded {
-  --app-radius-sm: 10px;
-  --app-radius-md: 14px;
-  --app-radius-lg: 18px;
-}
-
-
-/* No shadows */
-.app-shell--flat {
-  --app-shadow-sm: none;
-  --app-shadow-md: none;
-}
-
-
-/* ==================================================
-   Global reset
-================================================== */
-
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  min-height: 100%;
-}
-
-html {
-  font-size: 16px;
 }
 
 body {
   margin: 0;
-  font-family: var(--app-font-family);
-  font-size: var(--app-font-size);
-  line-height: var(--app-line-height);
-  color: var(--app-text-color);
-  background: var(--app-page-background);
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
 }
 
 button {
-  cursor: pointer;
+  font: inherit;
 }
-
-button:disabled {
-  cursor: not-allowed;
-}
-
-
-/* ==================================================
-   Main application shell
-================================================== */
 
 .app-shell {
+  display: flex;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: var(--app-page-background);
-  color: var(--app-text-color);
-  isolation: isolate;
-  transition:
-    background-color var(--app-transition-normal),
-    color var(--app-transition-normal);
 }
-
-
-/* ==================================================
-   Header layering
-================================================== */
-
-.app-header {
-  position: relative;
-  z-index: 100;
-  min-height: var(--app-header-height);
-  width: 100%;
-  flex-shrink: 0;
-}
-
-
-/* ==================================================
-   Main application body
-================================================== */
-
-/*
-   IMPORTANT:
-   Navigation is forced to the LEFT.
-   Content is forced to the RIGHT.
-*/
-
-.app-body {
-  display: flex;
-  flex-direction: row;
-  flex: 1 1 auto;
-  min-height: 0;
-  width: 100%;
-  align-items: stretch;
-  background: var(--app-page-background);
-}
-
-
-/* ==================================================
-   Left navigation
-================================================== */
 
 .navigation {
-  order: 1;
-
-  width: var(--app-navigation-width);
-  min-width: var(--app-navigation-width);
-  flex: 0 0 var(--app-navigation-width);
-
   display: flex;
   flex-direction: column;
-  gap: var(--app-spacing-sm);
-
-  padding: var(--app-spacing-lg) var(--app-spacing-md);
-
-  background: var(--app-surface-color);
-
-  border-right:
-    var(--app-border-width)
-    var(--app-border-style)
-    var(--app-border-color);
-
-  transition:
-    width var(--app-transition-normal),
-    flex-basis var(--app-transition-normal),
-    background-color var(--app-transition-normal),
-    border-color var(--app-transition-normal);
-}
-
-
-/* Navigation heading */
-
-.navigation__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--app-spacing-sm);
-  margin: 0 var(--app-spacing-sm) var(--app-spacing-sm);
+  gap: 4px;
+  width: 220px;
+  padding: 24px 16px;
+  background: #fff;
+  border-right: 1px solid #e4e4e4;
 }
 
 .navigation strong {
-  font-weight: 700;
-  color: var(--app-text-color);
+  margin: 0 8px 20px;
 }
 
-
-/* Optional navigation count */
-
-.navigation__count {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 24px;
-  min-height: 24px;
-
-  padding: 2px 8px;
-
-  border-radius: 999px;
-
-  background: var(--app-primary-background);
-  color: var(--app-primary-color);
-
-  font-size: 12px;
-  font-weight: 700;
-}
-
-
-/* Navigation list */
-
-.navigation-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--app-spacing-sm);
-}
-
-
-/* Navigation buttons */
-
-.navigation button,
-.navigation__item {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  gap: var(--app-spacing-sm);
-
-  padding: 10px 12px;
-
-  text-align: left;
-
-  border:
-    var(--app-border-width)
-    solid
-    transparent;
-
-  border-radius: var(--app-radius-sm);
-
+.navigation button {
+  padding: 9px 10px;
+  border: 0;
+  border-radius: 4px;
   background: transparent;
-  color: var(--app-text-color);
-
-  font-size: 16px;
-  font-weight: 500;
-
-  transition:
-    background-color var(--app-transition-fast),
-    color var(--app-transition-fast),
-    border-color var(--app-transition-fast),
-    transform var(--app-transition-fast);
+  color: #555;
+  text-align: left;
+  cursor: pointer;
 }
-
-
-/* Optional navigation icon */
-
-.navigation__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-}
-
-
-/* Optional navigation label */
-
-.navigation__label {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-
-/* Hover state */
 
 .navigation button:hover,
-.navigation__item:hover {
-  background: var(--app-primary-background);
-  color: var(--app-primary-color);
+.navigation button.active {
+  background: #eeeeee;
+  color: #111;
 }
-
-
-/* Active state */
-
-.navigation button.active,
-.navigation__item--active,
-.navigation button[aria-current="page"] {
-  background: var(--app-primary-background);
-  color: var(--app-primary-color);
-  border-color: var(--app-primary-border);
-  font-weight: 700;
-}
-
-
-/* Focus state */
-
-.navigation button:focus-visible,
-.navigation__item:focus-visible {
-  outline:
-    var(--app-focus-width)
-    solid
-    var(--app-primary-color);
-
-  outline-offset: var(--app-focus-offset);
-}
-
-
-/* Disabled state */
-
-.navigation button:disabled,
-.navigation__item[aria-disabled="true"] {
-  opacity: 0.5;
-}
-
-
-/* ==================================================
-   Main content area
-================================================== */
 
 .content {
-  order: 2;
-
-  flex: 1 1 auto;
-  min-width: 0;
-  width: auto;
-
-  padding: var(--app-content-padding);
-
-  background: var(--app-page-background);
-  color: var(--app-text-color);
-
-  transition:
-    background-color var(--app-transition-normal),
-    color var(--app-transition-normal);
+  padding: 48px;
 }
 
-
-/* Content header */
-
-.content__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  flex-wrap: wrap;
-
-  gap: var(--app-spacing-md);
-
-  margin-bottom: var(--app-spacing-lg);
+.content p {
+  margin: 0 0 8px;
 }
 
-
-/* Small content eyebrow */
-
-.content__eyebrow {
-  margin: 0 0 var(--app-spacing-xs);
-
-  color: var(--app-text-muted);
-
-  font-size: 13px;
-  font-weight: 700;
-
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.content small {
+  color: #777;
 }
 
-
-/* Content title */
-
-.content__title {
-  margin: 0;
-
-  color: var(--app-text-color);
-
-  font-size: clamp(24px, 3vw, 36px);
-  line-height: 1.2;
-}
-
-
-/* Content description */
-
-.content__description {
+.status-page {
   max-width: 760px;
-
-  margin: var(--app-spacing-sm) 0 0;
-
-  color: var(--app-text-muted);
 }
 
+.page-heading {
+  margin-bottom: 36px;
+}
 
-/* Content status */
-
-.content__status {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--app-spacing-xs);
-
-  padding: 6px 10px;
-
-  border-radius: 999px;
-
-  background: var(--app-primary-background);
-  color: var(--app-primary-color);
-
-  font-size: 13px;
+.eyebrow {
+  margin: 0 0 10px;
+  color: #1769aa;
+  font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-
-/* ==================================================
-   Reusable content card
-================================================== */
-
-.content-card {
-  padding: var(--app-spacing-lg);
-
-  background: var(--app-surface-color);
-
-  border:
-    var(--app-border-width)
-    var(--app-border-style)
-    var(--app-border-color);
-
-  border-radius: var(--app-radius-lg);
-
-  box-shadow: var(--app-shadow-sm);
-
-  transition:
-    background-color var(--app-transition-normal),
-    border-color var(--app-transition-normal),
-    box-shadow var(--app-transition-normal);
+.page-heading h1 {
+  margin: 0 0 10px;
+  font-size: 32px;
 }
 
-
-/* Card headings */
-
-.content-card h1,
-.content-card h2,
-.content-card h3,
-.content-card h4 {
-  margin-top: 0;
-  color: var(--app-text-color);
+.page-heading > p:last-child,
+.section-heading p {
+  margin: 0;
+  color: #687386;
 }
 
-
-/* Card paragraphs */
-
-.content-card p {
-  color: var(--app-text-color);
+.component-section {
+  padding: 24px 0;
+  border-top: 1px solid #e4e4e4;
 }
 
-
-/* Muted text */
-
-.content small,
-.content__muted,
-.text-muted {
-  color: var(--app-text-muted);
+.section-heading h2 {
+  margin: 0 0 6px;
+  font-size: 18px;
 }
 
-
-/* ==================================================
-   Generic reusable utility classes
-================================================== */
-
-.surface {
-  background: var(--app-surface-color);
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.page-background {
-  background: var(--app-page-background);
+.tabs-demo {
+  margin-top: 20px;
+  border: 1px solid #e4e4e4;
+  background: #fff;
 }
 
-.text-primary {
-  color: var(--app-text-color);
+.tabs-demo__content {
+  min-height: 120px;
+  padding: 24px;
 }
 
-.text-muted {
-  color: var(--app-text-muted);
+.tabs-demo__content p {
+  margin: 8px 0 0;
+  color: #687386;
 }
 
-.border-default {
-  border-color: var(--app-border-color);
+.tabs-demo__content--compact {
+  min-height: 90px;
 }
 
-.rounded-sm {
-  border-radius: var(--app-radius-sm);
+.tabs-page code {
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: #f0f2f5;
+  color: #1769aa;
+  font-size: 0.9em;
 }
 
-.rounded-md {
-  border-radius: var(--app-radius-md);
+.demo-page {
+  max-width: 860px;
 }
 
-.rounded-lg {
-  border-radius: var(--app-radius-lg);
+.demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.shadow-sm {
-  box-shadow: var(--app-shadow-sm);
+.demo-actions button,
+.modal__footer button {
+  padding: 9px 13px;
+  border: 1px solid #cbd2dc;
+  border-radius: 4px;
+  background: #fff;
+  color: #334155;
+  cursor: pointer;
 }
 
-.shadow-md {
-  box-shadow: var(--app-shadow-md);
+.demo-actions button:hover,
+.modal__footer button:hover:not(:disabled) {
+  border-color: #1769aa;
+  color: #1769aa;
 }
 
-
-/* ==================================================
-   Profile details overlay support
-================================================== */
-
-.app-header__profile-details-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
+.demo-actions button:focus-visible,
+.modal__footer button:focus-visible {
+  outline: 2px solid #1769aa;
+  outline-offset: 2px;
 }
 
-
-/* ==================================================
-   Optional mobile navigation state
-================================================== */
-
-.app-shell--navigation-collapsed .navigation {
-  width: 0;
-  min-width: 0;
-  flex-basis: 0;
-
-  padding-left: 0;
-  padding-right: 0;
-
-  overflow: hidden;
-
-  border-right: 0;
+.demo-actions button:disabled,
+.modal__footer button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
 }
 
-.app-shell--navigation-collapsed .navigation-list,
-.app-shell--navigation-collapsed .navigation__header {
-  opacity: 0;
-  pointer-events: none;
+.demo-button--active {
+  border-color: #1769aa !important;
+  background: #edf7ff !important;
+  color: #1769aa !important;
 }
 
+.tabs-demo--pills {
+  padding: 16px;
+}
 
-/* ==================================================
-   Responsive tablet layout
-================================================== */
-
-@media (max-width: 1024px) {
-  :root {
-    --app-navigation-width: 200px;
-    --app-content-padding: 24px;
+@media (max-width: 600px) {
+  .app-shell {
+    display: block;
   }
 
   .navigation {
-    padding: var(--app-spacing-md);
-  }
-
-  .navigation button,
-  .navigation__item {
-    font-size: 15px;
-  }
-}
-
-
-/* ==================================================
-   Responsive mobile layout
-================================================== */
-
-@media (max-width: 768px) {
-  :root {
-    --app-content-padding: 20px;
-  }
-
-  /*
-     On mobile the navigation moves above
-     the content.
-  */
-
-  .app-body {
-    flex-direction: column;
-  }
-
-  .navigation {
-    order: 1;
-
     width: 100%;
-    min-width: 0;
-    flex: none;
-
     border-right: 0;
-
-    border-bottom:
-      var(--app-border-width)
-      var(--app-border-style)
-      var(--app-border-color);
-
-    padding: var(--app-spacing-md);
+    border-bottom: 1px solid #e4e4e4;
   }
 
   .content {
-    order: 2;
-    width: 100%;
+    padding: 32px 20px;
   }
 
-  .navigation__header {
-    margin-bottom: var(--app-spacing-sm);
-  }
-
-  .navigation-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--app-spacing-sm);
-  }
-
-  .navigation button,
-  .navigation__item {
-    font-size: 14px;
-  }
-
-  .content {
-    padding: var(--app-content-padding);
-  }
-
-  .content__header {
-    flex-direction: column;
-  }
-
-  .content__title {
+  .page-heading h1 {
     font-size: 28px;
-  }
-}
-
-
-/* ==================================================
-   Small mobile screens
-================================================== */
-
-@media (max-width: 480px) {
-  :root {
-    --app-content-padding: 16px;
-  }
-
-  .navigation {
-    padding: 12px;
-  }
-
-  .navigation-list {
-    grid-template-columns: 1fr;
-  }
-
-  .navigation button,
-  .navigation__item {
-    padding: 10px;
-  }
-
-  .content {
-    padding: var(--app-content-padding);
-  }
-
-  .content-card {
-    padding: var(--app-spacing-md);
-    border-radius: var(--app-radius-md);
-  }
-
-  .content__title {
-    font-size: 24px;
-  }
-}
-
-
-/* ==================================================
-   Reduced motion accessibility
-================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-
-/* ==================================================
-   High contrast accessibility
-================================================== */
-
-@media (forced-colors: active) {
-  .navigation {
-    border-color: CanvasText;
-  }
-
-  .navigation button:hover,
-  .navigation button.active,
-  .navigation button[aria-current="page"],
-  .navigation__item--active {
-    border-color: Highlight;
-    background: Highlight;
-    color: HighlightText;
-  }
-
-  .content-card {
-    border-color: CanvasText;
-  }
-
-  .content__status,
-  .navigation__count {
-    border: 1px solid CanvasText;
   }
 }
