@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BarChart3, Bell, Boxes, CircleHelp, FileBarChart, FileText, FolderKanban, FolderOpen, Globe2, Home, Layers3, Link2, LogOut, Moon, Settings, ShieldCheck, Sun, Users, Workflow } from 'lucide-react'
-import Header from '../../common/Header/Header'
+import Header from '../../common/Header/header'
 import Sidebar from '../../common/Sidebar/Sidebar'
 
 const notificationCategories = [
@@ -76,7 +76,6 @@ export default function SidebarPage() {
   const [collapsed, setCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [theme, setTheme] = useState('light')
-  const [searchValue, setSearchValue] = useState('')
 
   useEffect(() => {
     const syncRoute = () => setActivePath(window.location.pathname)
@@ -107,27 +106,21 @@ export default function SidebarPage() {
     { id: 'sign-out', label: 'Sign out', icon: LogOut },
   ]
   const user = { name: 'Workspace member', role: 'Manager', initials: 'WM' }
-  const headerActions = [
-    { id: 'notifications', label: 'Open notifications', icon: Bell, badge: notificationTotal, path: '/notifications/mentions' },
-    { id: 'help', label: 'Open help center', icon: CircleHelp, path: '/help' },
-  ]
 
   return (
     <div className="sidebar-experience">
       <Header
-        logo={{ label: 'PlansStudio' }}
-        navigationItems={[]}
-        activePath={activePath}
-        onNavigate={navigate}
-        searchConfig={{
-          placeholder: 'Search workspace',
-          value: searchValue,
-          onChange: setSearchValue,
-          onSearch: setSearchValue,
-        }}
-        actions={headerActions}
-        onAction={(action) => action.path && navigate(action.path)}
+        appName="PlansStudio"
         user={user}
+        profileFields={[{ key: 'role', label: 'Role' }]}
+        notificationCount={notificationTotal}
+        onNotificationsClick={() => navigate('/notifications/mentions')}
+        onLogoClick={() => navigate('/overview')}
+        showNotifications
+        showProfile
+        showUserName
+        showLogout
+        showProfileAction
       />
       <div className="sidebar-demo">
         <Sidebar

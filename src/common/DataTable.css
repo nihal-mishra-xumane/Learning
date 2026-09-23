@@ -1,0 +1,198 @@
+/* =========================================================
+   Data Table
+   Reusable styling — self-contained, safe to copy with the
+   component into another app.
+   ========================================================= */
+
+.data-table {
+  --table-bg: #ffffff;
+  --table-border: #e4e4e4;
+  --table-header-bg: #f8fafc;
+  --table-text: #1f2937;
+  --table-muted: #687386;
+  --table-primary: #1769aa;
+  --table-row-hover: #f8fafc;
+  --table-row-selected: #edf7ff;
+
+  width: 100%;
+  border: 1px solid var(--table-border);
+  border-radius: 8px;
+  background: var(--table-bg);
+  overflow: hidden;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: var(--table-text);
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--table-border);
+  white-space: nowrap;
+}
+
+.data-table th.align-right,
+.data-table td.align-right {
+  text-align: right;
+}
+
+.data-table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.data-table tbody tr:hover {
+  background: var(--table-row-hover);
+}
+
+.data-table tbody tr.is-selected {
+  background: var(--table-row-selected);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.sort-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.sort-button:hover {
+  color: var(--table-primary);
+}
+
+.table-selection {
+  width: 44px;
+}
+
+.table-actions {
+  width: 1%;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--table-muted);
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.icon-button:not(:disabled):hover {
+  background: #eff6ff;
+  color: var(--table-primary);
+  border-color: #bfdbfe;
+}
+
+.icon-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.table-state {
+  padding: 32px 16px;
+  color: var(--table-muted);
+  text-align: center;
+  white-space: normal;
+}
+
+.table-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.table-skeleton {
+  display: block;
+  height: 14px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #eef1f5 25%, #e2e8f0 37%, #eef1f5 63%);
+  background-size: 400% 100%;
+  animation: table-skeleton-pulse 1.4s ease infinite;
+}
+
+@keyframes table-skeleton-pulse {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  border-top: 1px solid var(--table-border);
+  color: var(--table-muted);
+  font-size: 13px;
+}
+
+.pagination label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pagination select {
+  padding: 4px 6px;
+  border: 1px solid var(--table-border);
+  border-radius: 6px;
+  font: inherit;
+}
+
+.pagination-summary {
+  flex: 1;
+}
+
+.pagination-buttons {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (max-width: 600px) {
+  .data-table th,
+  .data-table td {
+    padding: 10px 12px;
+  }
+
+  .pagination {
+    justify-content: center;
+    text-align: center;
+  }
+}

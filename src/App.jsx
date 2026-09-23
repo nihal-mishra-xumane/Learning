@@ -3,12 +3,14 @@ import Header from './common/Header/header'
 import Buttons from './pages/Buttons/Buttons'
 import FiltersPage from './pages/Filters/FiltersPage'
 import Forms from './pages/Forms/Forms'
+import HeaderPage from './pages/Header/HeaderPage'
 import ModalsPage from './pages/Modals/Modals'
 import NotificationsPage from './pages/Notifications/Notifications'
 import SearchPage from './pages/Search/SearchPage'
 import SidebarPage from './pages/Sidebar/SidebarPage'
 import StatusBadgesPage from './pages/StatusBadges/StatusBadgesPage'
 import TabsPage from './pages/Tabs/Tabs'
+import TablesPage from './pages/Tables/Tables'
 import './styles.css'
 
 const pageConfig = [
@@ -46,6 +48,8 @@ const initialNotifications = [
 ]
 
 function PagePreview({ activePage }) {
+  if (activePage === 'header') return <HeaderPage />
+  if (activePage === 'tables') return <TablesPage />
   if (activePage === 'buttons') return <Buttons />
   if (activePage === 'forms') return <Forms />
   if (activePage === 'filters') return <FiltersPage />
@@ -65,6 +69,8 @@ function PagePreview({ activePage }) {
   )
 }
 
+const pagesWithOwnHeaderDemo = new Set(['header', 'sidebar'])
+
 export default function App() {
   const [activePage, setActivePage] = useState('theme')
   const [notifications, setNotifications] = useState(initialNotifications)
@@ -75,23 +81,25 @@ export default function App() {
 
   return (
     <div className="app-shell app-shell--light">
-      <Header
-        appName="Airtecture"
-        appLogo="CA"
-        user={user}
-        profileFields={profileFields}
-        notificationCount={notifications.filter((item) => !item.isRead).length}
-        notifications={notifications}
-        onNotificationsClick={() => setNotifications((items) => items.map((item) => ({ ...item, isRead: true })))}
-        onProfileClick={() => undefined}
-        onLogout={() => undefined}
-        onLogoClick={() => setActivePage('theme')}
-        showNotifications
-        showProfile
-        showUserName
-        showLogout
-        showProfileAction
-      />
+      {!pagesWithOwnHeaderDemo.has(activePage) && (
+        <Header
+          appName="Airtecture"
+          appLogo="CA"
+          user={user}
+          profileFields={profileFields}
+          notificationCount={notifications.filter((item) => !item.isRead).length}
+          notifications={notifications}
+          onNotificationsClick={() => setNotifications((items) => items.map((item) => ({ ...item, isRead: true })))}
+          onProfileClick={() => undefined}
+          onLogout={() => undefined}
+          onLogoClick={() => setActivePage('theme')}
+          showNotifications
+          showProfile
+          showUserName
+          showLogout
+          showProfileAction
+        />
+      )}
 
       <div className="app-body">
         <nav className="navigation" aria-label="Application pages">

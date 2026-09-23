@@ -1,6 +1,7 @@
 import { Columns3, Pencil, Trash2, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import DataTable from '../../common/DataTable'
+import './Tables.css'
 
 const records = [
   { id: 1, name: 'Avery Stone', category: 'Standard', score: 92, updated: '18 Sep 2026' },

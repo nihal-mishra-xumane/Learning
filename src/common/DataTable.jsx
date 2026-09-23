@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, MoreHorizontal } from 'lucide-react'
+import Button from './Buttons/Button'
+import './DataTable.css'
 
 function getValue(row, column) {
   if (typeof column.accessor === 'function') return column.accessor(row)
@@ -168,7 +170,7 @@ export default function DataTable({
       return <tr><td colSpan={columnCount} className="table-state table-error" role="alert">
         <strong>Unable to load records</strong>
         <span>{typeof error === 'string' ? error : error.message ?? 'Something went wrong.'}</span>
-        {onRetry && <button type="button" className="button button-secondary" onClick={onRetry}>Try again</button>}
+        {onRetry && <Button variant="secondary" onClick={onRetry}>Try again</Button>}
       </td></tr>
     }
     if (!visibleRows.length) {
