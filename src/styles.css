@@ -1,66 +1,104 @@
-:root {
-  font-family: Arial, sans-serif;
-  color: #222;
-  background: #f7f7f7;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-button {
-  font: inherit;
-}
+/**
+ * App shell layout.
+ *
+ * Base styles and shared component classes live in `common/theme/theme.css`;
+ * this file only positions the header, sidebar and content area - using the
+ * same tokens, so the shell re-themes along with everything else.
+ */
 
 .app-shell {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
+  background: var(--ui-color-bg-canvas);
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--ui-z-index-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ui-space-5);
+  height: var(--ui-size-header);
+  padding-inline: var(--ui-space-6);
+  background: var(--ui-color-bg-surface);
+  border-bottom: var(--ui-border-width-hairline) solid var(--ui-color-border-subtle);
+}
+
+.app-brand {
+  font-size: var(--ui-font-size-lg);
+  font-weight: var(--ui-font-weight-semibold);
+  letter-spacing: var(--ui-font-letter-spacing-tight);
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
 }
 
 .navigation {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  width: 220px;
-  padding: 24px 16px;
-  background: #fff;
-  border-right: 1px solid #e4e4e4;
-}
-
-.navigation strong {
-  margin: 0 8px 20px;
+  gap: var(--ui-space-1);
+  flex: 0 0 var(--ui-size-sidebar);
+  width: var(--ui-size-sidebar);
+  padding: var(--ui-space-5) var(--ui-space-4);
+  background: var(--ui-color-bg-surface);
+  border-right: var(--ui-border-width-hairline) solid var(--ui-color-border-subtle);
 }
 
 .navigation button {
-  padding: 9px 10px;
+  display: flex;
+  align-items: center;
+  min-height: var(--ui-size-control-sm);
+  padding: var(--ui-space-3) var(--ui-space-4);
   border: 0;
-  border-radius: 4px;
+  border-radius: var(--ui-radius-md);
   background: transparent;
-  color: #555;
+  color: var(--ui-color-text-secondary);
+  font-size: var(--ui-font-size-md);
   text-align: left;
   cursor: pointer;
+  transition: background-color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard),
+    color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard);
 }
 
-.navigation button:hover,
+.navigation button:hover {
+  background: var(--ui-color-bg-hover);
+  color: var(--ui-color-text-primary);
+}
+
 .navigation button.active {
-  background: #eeeeee;
-  color: #111;
+  background: var(--ui-color-bg-selected);
+  color: var(--ui-color-primary-soft-text);
+  font-weight: var(--ui-font-weight-medium);
 }
 
 .content {
-  padding: 48px;
+  flex: 1;
+  min-width: 0;
+  padding: var(--ui-space-8) var(--ui-space-8) var(--ui-space-11);
+  outline: none;
 }
 
-.content p {
-  margin: 0 0 8px;
+/* Content width is a theme setting, applied here so every page inherits it. */
+.content-inner {
+  max-width: var(--ui-size-content-max);
+  margin-inline: auto;
 }
 
-.content small {
-  color: #777;
+/* Sidebar side is a theme setting. The attribute is set by the provider,
+   because CSS cannot switch a rule on a custom property. */
+:root[data-sidebar='right'] .app-body {
+  flex-direction: row-reverse;
+}
+
+:root[data-sidebar='right'] .navigation {
+  border-right: 0;
+  border-left: var(--ui-border-width-hairline) solid var(--ui-color-border-subtle);
 }
 
 .status-page {
@@ -190,14 +228,44 @@ button {
     display: block;
   }
 
+/* Tablet: narrower rail. */
+@media (max-width: 1023px) {
   .navigation {
-    width: 100%;
-    border-right: 0;
-    border-bottom: 1px solid #e4e4e4;
+    flex-basis: var(--ui-size-sidebar-collapsed);
+    width: auto;
+    max-width: var(--ui-size-sidebar);
   }
 
   .content {
-    padding: 32px 20px;
+    padding: var(--ui-space-6);
+  }
+}
+
+/* Mobile: the sidebar becomes a horizontally scrolling strip. */
+@media (max-width: 767px) {
+  .app-body,
+  /* Beats the data-sidebar rule above, which is more specific. */
+  :root[data-sidebar='right'] .app-body {
+    flex-direction: column;
+  }
+
+  .navigation {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: none;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: var(--ui-space-3) var(--ui-space-4);
+    border-right: 0;
+    border-bottom: var(--ui-border-width-hairline) solid var(--ui-color-border-subtle);
+  }
+
+  .navigation button {
+    white-space: nowrap;
+  }
+
+  .content {
+    padding: var(--ui-space-5) var(--ui-space-4) var(--ui-space-10);
   }
 
   .page-heading h1 {

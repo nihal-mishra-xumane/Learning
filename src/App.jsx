@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
+import { ErrorBoundary } from './common/components'
 import Header from './common/Header/header'
+import { ThemeToggle } from './common/theme'
 import Buttons from './pages/Buttons/Buttons'
 import FiltersPage from './pages/Filters/FiltersPage'
 import Forms from './pages/Forms/Forms'
@@ -11,6 +13,7 @@ import SidebarPage from './pages/Sidebar/SidebarPage'
 import StatusBadgesPage from './pages/StatusBadges/StatusBadgesPage'
 import TabsPage from './pages/Tabs/Tabs'
 import TablesPage from './pages/Tables/Tables'
+import ThemeConfigPage from './pages/Theme/ThemeConfigPage'
 import './styles.css'
 
 const pageConfig = [
@@ -50,6 +53,7 @@ const initialNotifications = [
 function PagePreview({ activePage }) {
   if (activePage === 'header') return <HeaderPage />
   if (activePage === 'tables') return <TablesPage />
+  if (activePage === 'theme') return <ThemeConfigPage />
   if (activePage === 'buttons') return <Buttons />
   if (activePage === 'forms') return <Forms />
   if (activePage === 'filters') return <FiltersPage />
@@ -81,6 +85,10 @@ export default function App() {
 
   return (
     <div className="app-shell app-shell--light">
+      <a className="ui-skip-link" href="#main-content">
+        Skip to content
+      </a>
+
       {!pagesWithOwnHeaderDemo.has(activePage) && (
         <Header
           appName="Airtecture"
@@ -98,7 +106,9 @@ export default function App() {
           showUserName
           showLogout
           showProfileAction
-        />
+        >
+          <ThemeToggle iconOnly label="Colour theme" />
+        </Header>
       )}
 
       <div className="app-body">
@@ -122,7 +132,7 @@ export default function App() {
           </div>
         </nav>
 
-        <main className="content">
+        <main className="content" id="main-content" tabIndex={-1}>
           <div className="content__header">
             <div>
               <p className="content__eyebrow">Common components</p>
@@ -132,7 +142,9 @@ export default function App() {
             <span className="content__status">Active</span>
           </div>
           <div className="content__card">
-            <PagePreview activePage={activePage} />
+            <ErrorBoundary key={activePage}>
+              <PagePreview activePage={activePage} />
+            </ErrorBoundary>
           </div>
         </main>
       </div>

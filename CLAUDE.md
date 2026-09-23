@@ -55,10 +55,30 @@ it must stay self-contained:
 
 ## Known gaps (check before assuming something exists)
 
-- `src/common/Login/`, `src/common/Theme/`, `src/common/Tables/` are currently
-  empty placeholders — components not built yet, referenced in the nav but with
-  no implementation.
-- `src/common/DataTable.jsx` has no CSS anywhere in the repo; it renders unstyled
-  until that's added.
-- There is no shared design-token/theme file; component CSS files each hardcode
-  their own colors independently.
+- `src/common/Login/` is currently an empty placeholder — no Login component
+  built yet, referenced in the nav but with no implementation.
+
+## ⚠️ Unresolved: two competing component sets (pick one before adding more)
+
+`src/common/theme/` (a `ThemeProvider` + design-token system) was merged in
+from a separate branch. It ships with its own `src/common/components/`
+folder containing `Button`, `Select`, `Switch`, and `Slider` — which
+**duplicate** `src/common/Buttons/Button.jsx`, `src/common/Forms/Select.jsx`,
+and `src/common/Forms/Switch.jsx`. This is exactly the duplication this file
+tells you not to create, and it exists only because it hasn't been reconciled
+yet:
+
+- `src/common/components/*` are styled entirely through the new token/CSS-variable
+  system (`ui-btn`, `ui-select`, …) — only these respond live to the Theme page's
+  color/typography controls.
+- `src/common/Buttons/*` and `src/common/Forms/*` use hardcoded hex colors per
+  component and do **not** react to theme changes.
+- `src/pages/Theme/ThemeConfigPage.jsx` and `ThemePreview.jsx` depend on the
+  `src/common/components/*` versions specifically, for that reason.
+
+**Do not silently pick one when adding a new page.** Check which family the
+rest of that page/feature already uses and stay consistent, or ask. Migrating
+everything onto the token-driven set (retiring `Buttons/`/`Forms/`'s
+duplicated pieces) is the likely long-term direction, but is a deliberate,
+separate piece of work — not something to do incidentally while building
+something else.
