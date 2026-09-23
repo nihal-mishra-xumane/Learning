@@ -13,26 +13,6 @@
   background: var(--ui-color-bg-canvas);
 }
 
-.app-header {
-  position: sticky;
-  top: 0;
-  z-index: var(--ui-z-index-header);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ui-space-5);
-  height: var(--ui-size-header);
-  padding-inline: var(--ui-space-6);
-  background: var(--ui-color-bg-surface);
-  border-bottom: var(--ui-border-width-hairline) solid var(--ui-color-border-subtle);
-}
-
-.app-brand {
-  font-size: var(--ui-font-size-lg);
-  font-weight: var(--ui-font-weight-semibold);
-  letter-spacing: var(--ui-font-letter-spacing-tight);
-}
-
 .app-body {
   display: flex;
   flex: 1;
@@ -289,8 +269,7 @@
   margin-top: 20px;
 }
 
-.demo-actions button,
-.modal__footer button {
+.demo-actions button {
   padding: 9px 13px;
   border: 1px solid #cbd2dc;
   border-radius: 4px;
@@ -299,20 +278,17 @@
   cursor: pointer;
 }
 
-.demo-actions button:hover,
-.modal__footer button:hover:not(:disabled) {
+.demo-actions button:hover {
   border-color: #1769aa;
   color: #1769aa;
 }
 
-.demo-actions button:focus-visible,
-.modal__footer button:focus-visible {
+.demo-actions button:focus-visible {
   outline: 2px solid #1769aa;
   outline-offset: 2px;
 }
 
-.demo-actions button:disabled,
-.modal__footer button:disabled {
+.demo-actions button:disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }
