@@ -740,6 +740,56 @@ tbody tr.is-selected {
   gap: 8px 18px;
 }
 
+.sidebar-experience {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  background: #f7f3eb;
+}
+
+.sidebar-demo {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  color: #20302f;
+  background: #f7f3eb;
+}
+
+.sidebar-demo-content {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+  padding: clamp(32px, 7vw, 92px) clamp(28px, 8vw, 120px);
+  background: radial-gradient(circle at 88% 12%, #d7eee4 0, transparent 27%), linear-gradient(135deg, #fbfaf6 0%, #f4eee3 100%);
+}
+
+.sidebar-demo-content::after { position: absolute; right: -100px; bottom: -150px; width: 360px; height: 360px; border: 1px solid #d8b98c80; border-radius: 50%; box-shadow: 0 0 0 28px #d8b98c1a, 0 0 0 56px #d8b98c12; content: ''; }
+
+.eyebrow {
+  margin: 0 0 20px;
+  color: #0b786d;
+  font: 700 .72rem/1 'Trebuchet MS', sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.sidebar-demo-content h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 14px;
+  max-width: 620px;
+  font: 700 clamp(2.4rem, 5vw, 5rem)/.92 Georgia, serif;
+  letter-spacing: -.025em;
+}
+
+.sidebar-demo-copy { position: relative; z-index: 1; max-width: 480px; margin: 0; color: #66736f; font-size: 1.05rem; line-height: 1.7; }
+.sidebar-demo-status { position: relative; z-index: 1; display: flex; align-items: center; gap: 8px; width: max-content; margin-top: 40px; padding: 9px 12px; color: #4f625d; background: #fffaf1b8; border: 1px solid #ded2bd; border-radius: 99px; font-size: .82rem; }
+.sidebar-demo-status span { width: 8px; height: 8px; background: #30a46c; border-radius: 50%; }
+.mobile-menu-button { display: none; }
+
 @media (max-width: 600px) {
   .app-shell {
     display: block;
@@ -782,6 +832,11 @@ tbody tr.is-selected {
   .form-showcase__choice-grid {
     grid-template-columns: 1fr;
   }
+  .app-shell { display: block; }
+  .app-shell > .navigation { display: none; }
+  .sidebar-demo { min-height: calc(100vh - 86px); }
+  .sidebar-demo-content { padding: 72px 24px 40px; }
+  .mobile-menu-button { display: inline-flex; margin-bottom: 48px; padding: 9px 14px; color: #fff; background: #0b786d; border: 0; border-radius: 7px; cursor: pointer; }
 }
 
 .showcase-page {

@@ -3,6 +3,7 @@ import SearchPage from './pages/Search/SearchPage'
 import FiltersPage from './pages/Filters/FiltersPage'
 import Buttons from './pages/Buttons/Buttons'
 import Forms from './pages/Forms/Forms'
+import SidebarPage from './pages/Sidebar/SidebarPage'
 
 const pages = [
   'Login',
@@ -36,22 +37,26 @@ export default function App() {
         ))}
       </nav>
 
-      <section className="content">
-        {activePage === 'Search' ? (
-          <SearchPage />
-        ) : activePage === 'Filters' ? (
-          <FiltersPage />
-        ) : activePage === 'Buttons' ? (
-          <Buttons />
-        ) : activePage === 'Forms' ? (
-          <Forms />
-        ) : (
-          <>
-            <p>Page content will be displayed here.</p>
-            <small>Selected: {activePage}</small>
-          </>
-        )}
-      </section>
+      {activePage === 'Sidebar' ? (
+        <SidebarPage />
+      ) : (
+        <section className="content">
+          {activePage === 'Search' ? (
+            <SearchPage />
+          ) : activePage === 'Filters' ? (
+            <FiltersPage />
+          ) : activePage === 'Buttons' ? (
+            <Buttons />
+          ) : activePage === 'Forms' ? (
+            <Forms />
+          ) : (
+            <>
+              <p>Page content will be displayed here.</p>
+              <small>Selected: {activePage}</small>
+            </>
+          )}
+        </section>
+      )}
     </main>
   )
 }
