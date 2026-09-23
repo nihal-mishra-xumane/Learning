@@ -164,7 +164,12 @@ function Modal({
   const stepContent = activeStep?.props?.children || activeStep?.content || null
 
   const stepFooter = hasStepContent ? (
-    <footer className="modal__footer modal__footer--step">
+    <>
+      {isFirstStep && onClose && !closeDisabled && (
+        <button type="button" className="modal__button modal__button--secondary" onClick={onClose}>
+          {dismissLabel}
+        </button>
+      )}
       {!isFirstStep && onClose && !closeDisabled && (
         <button type="button" className="modal__button modal__button--secondary" onClick={handlePrevious}>
           {backLabel}
@@ -185,7 +190,7 @@ function Modal({
           {nextLabel}
         </button>
       )}
-    </footer>
+    </>
   ) : null
 
   const renderBody = () => {

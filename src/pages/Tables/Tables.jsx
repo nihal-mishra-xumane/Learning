@@ -1,6 +1,6 @@
 import { Columns3, Pencil, Trash2, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
-import DataTable from '../../common/DataTable'
+import DataTable from '../../common/Tables/DataTable'
 import './Tables.css'
 
 const records = [

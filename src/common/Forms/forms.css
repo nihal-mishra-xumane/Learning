@@ -65,11 +65,36 @@
   border-color: #2f7a4f;
 }
 
+.common-control--sm {
+  min-height: 36px;
+  font-size: 13px;
+}
+
+.common-control--lg {
+  min-height: 48px;
+  font-size: 15px;
+}
+
 .common-control--textarea {
   display: block;
   min-height: 100px;
   padding: 10px 12px;
+}
+
+.common-control--resize-none {
+  resize: none;
+}
+
+.common-control--resize-vertical {
   resize: vertical;
+}
+
+.common-control--resize-horizontal {
+  resize: horizontal;
+}
+
+.common-control--resize-both {
+  resize: both;
 }
 
 .common-field__message {

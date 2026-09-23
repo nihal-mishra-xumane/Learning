@@ -31,9 +31,11 @@ it must stay self-contained:
 - **No imports from outside `src/common/`.** No app state, no app routing, no
   `src/pages/**` imports. If a component needs data, it comes in through props.
 - **No hardcoded app-specific values** (brand names, product copy, real user data,
-  API endpoints) as functional defaults. `src/common/Sidebar/Sidebar.jsx`'s
-  `brand = 'planstudio'` default is an example of what NOT to do — defaults should
-  be generic placeholders, not this product's name.
+  API endpoints) as functional defaults. `src/common/Sidebar/Sidebar.jsx` used to
+  default `brand` to `'planstudio'` (and hardcode its brand-mark icon to the
+  letter "p", derived from that same name) — both now fixed to generic
+  fallbacks. That's the shape of mistake to avoid: check every literal you add
+  to a common component for whether it's really generic.
 - **Match the component's actual prop API.** Check the component's source (or its
   README, e.g. `src/common/Header/README.md`) before wiring it up — don't guess
   prop names. `src/pages/Sidebar/SidebarPage.jsx` previously called `<Header>` with
@@ -52,11 +54,6 @@ it must stay self-contained:
   `sidebar-*`, `modal__*`) so styles don't collide with a host app's global
   classes after copying. Don't add unprefixed generic class names like
   `pagination` or `icon-button`.
-
-## Known gaps (check before assuming something exists)
-
-- `src/common/Login/` is currently an empty placeholder — no Login component
-  built yet, referenced in the nav but with no implementation.
 
 ## ⚠️ Unresolved: two competing component sets (pick one before adding more)
 

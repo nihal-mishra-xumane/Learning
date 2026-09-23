@@ -9,11 +9,13 @@ see the root `CLAUDE.md` for the full rule.
 
 ## Areas
 
-- `Buttons/`, `Forms/`, `Header/`, `Sidebar/`, `Modals/`, `Notifications/`,
-  `Tabs/`, `StatusBadges/`, `Filters/`, `Search/`, `DataTable.jsx` — the
-  established controls, tabs, modals, notifications, status badges, buttons,
-  forms, header and data table. Pages compose these from `src/pages`. All are
-  exported from `src/common/index.js`.
+- `Buttons/`, `Forms/`, `Header/`, `Login/`, `Sidebar/`, `Modals/`,
+  `Notifications/`, `Tabs/`, `StatusBadges/`, `Filters/`, `Search/`, `Tables/`
+  — the established controls: buttons, form fields, header, login form,
+  sidebar nav, modals, notifications, tabs, status badges, filters, search,
+  and data table. Pages compose these from `src/pages`. All are exported from
+  `src/common/index.js`. Each folder has its own `README.md` with its props
+  and a usage example.
 - `theme/` — design tokens, the `ThemeProvider`, `ThemeToggle` and the shared
   `ui-` styles. See its README before adding any styling anywhere else.
 - `components/` — presentational primitives built specifically against the

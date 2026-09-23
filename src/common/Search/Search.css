@@ -85,8 +85,6 @@
 
 .search-clear-btn,
 .search-trigger-btn,
-.search-option-btn,
-.search-select-toggle,
 .search-select-action {
   border: 0;
   background: transparent;
@@ -98,8 +96,6 @@
 
 .search-clear-btn:hover,
 .search-trigger-btn:hover,
-.search-option-btn:hover,
-.search-select-toggle:hover,
 .search-select-action:hover {
   background: rgba(94, 136, 216, 0.08);
   color: var(--search-text);

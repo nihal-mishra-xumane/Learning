@@ -1,4 +1,3 @@
-import React from 'react';
 import './Search.css';
 import TextSearch from './components/TextSearch';
 import MultiSearch from './components/MultiSearch';

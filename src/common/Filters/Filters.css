@@ -251,11 +251,6 @@
   gap: 10px;
 }
 
-.filter-range {
-  display: grid;
-  gap: 10px;
-}
-
 .filter-switch {
   display: inline-flex;
   align-items: center;

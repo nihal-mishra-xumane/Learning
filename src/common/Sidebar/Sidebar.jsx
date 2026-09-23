@@ -26,7 +26,7 @@ export default function Sidebar({
   activePath,
   onNavigate,
   title = 'Workspace',
-  brand = 'planstudio',
+  brand = 'Brand',
   role = 'user',
   permissions = [],
   collapsed = false,
@@ -115,7 +115,7 @@ export default function Sidebar({
       <aside className={`sidebar ${collapsed ? 'is-collapsed' : ''} ${mobileOpen ? 'is-mobile-open' : ''}`} data-theme={theme} aria-label="Main navigation">
         <div className="sidebar-header">
           {showBrand && <div className="sidebar-brand">
-            <span className="sidebar-mark">p</span>
+            <span className="sidebar-mark">{brand ? brand.trim().charAt(0).toUpperCase() : 'B'}</span>
             <span className="sidebar-brand-name">{brand}</span>
           </div>}
           <button className="sidebar-close" type="button" aria-label="Close navigation" onClick={onMobileClose}>

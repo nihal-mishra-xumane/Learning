@@ -75,7 +75,7 @@ const Input = forwardRef(function Input(
           {...props}
         />
         {clearable && currentValue ? <button type="button" className="common-input__action" onClick={handleClear} aria-label={`Clear ${label || 'input'}`}><X size={16} /></button> : null}
-        {showPasswordToggle && type === 'password' ? <button type="button" className="common-input__action" onClick={() => setShowPassword((visible) => !visible)} aria-label={showPassword ? 'Hide password' : 'Show password'}><>{showPassword ? <EyeOff size={16} /> : <Eye size={16} />}</></button> : null}
+        {showPasswordToggle && type === 'password' ? <button type="button" className="common-input__action" onClick={() => setShowPassword((visible) => !visible)} aria-label={showPassword ? 'Hide password' : 'Show password'}>{showPassword ? <EyeOff size={16} /> : <Eye size={16} />}</button> : null}
         {rightIcon && !clearable && !(showPasswordToggle && type === 'password') ? <span className="common-input__icon common-input__icon--right" aria-hidden="true">{rightIcon}</span> : null}
         {suffix ? <span className="common-input__affix">{suffix}</span> : null}
       </div>

@@ -60,7 +60,15 @@ export default function NotificationPanel({
             key={notification.id}
             role="listitem"
             className={`notification-panel__item${notification.read ? '' : ' notification-panel__item--unread'}`}
+            tabIndex={onNotificationClick ? 0 : undefined}
             onClick={() => onNotificationClick?.(notification)}
+            onKeyDown={(event) => {
+              if (!onNotificationClick) return
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                onNotificationClick(notification)
+              }
+            }}
           >
             <div className="notification-panel__avatar" aria-hidden="true">
               {notification.avatar ? <img src={notification.avatar} alt="" /> : notification.name?.charAt(0) || <Bell size={16} />}

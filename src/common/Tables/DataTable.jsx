@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, MoreHorizontal } from 'lucide-react'
-import Button from './Buttons/Button'
+import Button from '../Buttons/Button'
 import './DataTable.css'
 
 function getValue(row, column) {

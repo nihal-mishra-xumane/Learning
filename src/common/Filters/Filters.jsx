@@ -86,11 +86,7 @@ export function Filters({
       error: Boolean(field.error),
     };
 
-    return (
-      <div key={field.name || field.label || field.type} className="filter-field">
-        <Component {...fieldProps} />
-      </div>
-    );
+    return <Component key={field.name || field.label || field.type} {...fieldProps} />;
   };
 
   return (

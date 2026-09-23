@@ -102,7 +102,7 @@ export default function CreateModal({
         </div>
         <div className="data-modal__actions">
           <button type="button" className="data-modal__button data-modal__button--secondary" onClick={onClose} disabled={isSubmitting}>{cancelText}</button>
-          <button type="submit" className="data-modal__button data-modal__button--primary" disabled={isSubmitting}>{isSubmitting ? 'Saving...' : submitText}</button>
+          <button type="submit" className="data-modal__button data-modal__button--primary" disabled={isSubmitting}>{isSubmitting ? savingText : submitText}</button>
         </div>
       </form>
     </Modal>
